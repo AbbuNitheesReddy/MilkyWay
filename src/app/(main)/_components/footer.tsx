@@ -42,10 +42,10 @@ export function Footer() {
         <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground font-semibold tracking-wider">
           <Link href="/contact" className="hover:text-primary">CONTACT US</Link>
           <Link href="/branches" className="hover:text-primary">OUR BRANCHES</Link>
-          <Link href="#" className="hover:text-primary">FARMING PRACTICES</Link>
-          <Link href="#" className="hover:text-primary">PRIVACY POLICY</Link>
-          <Link href="#" className="hover:text-primary">TERMS OF USE</Link>
-          <Link href="#" className="hover:text-primary">RETURN POLICY</Link>
+          <Link href="/about" className="hover:text-primary">FARMING PRACTICES</Link>
+          <Link href="/about" className="hover:text-primary">PRIVACY POLICY</Link>
+          <Link href="/about" className="hover:text-primary">TERMS OF USE</Link>
+          <Link href="/about" className="hover:text-primary">RETURN POLICY</Link>
         </nav>
       </div>
     </footer>
