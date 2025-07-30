@@ -9,6 +9,9 @@ import { ProductCard } from './(main)/_components/product-card';
 import { Header } from './(main)/_components/header';
 import { Footer } from './(main)/_components/footer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
 
 const categories = [
   { name: 'Milk', icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8 text-primary"><path d="M12 2c-3 0-5.2 2.4-5.2 5.2 0 2.2 1 4 2.2 5.5.5.6.8 1.2.8 1.8v5.5c0 .6.4 1 1 1h2c.6 0 1-.4 1-1V14.5c0-.6.3-1.2.8-1.8 1.2-1.5 2.2-3.3 2.2-5.5C17.2 4.4 15 2 12 2z"/><path d="M12 2v2.5"/></svg>, href: '/products' },
@@ -171,6 +174,64 @@ export default function Home() {
         </section>
 
         <section className="py-12 md:py-20 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-16 items-start">
+              <div>
+                <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
+                <p className="text-muted-foreground mb-4">
+                  We would be delighted to welcome you to the farm to meet our cows and understand our farming practices.
+                </p>
+                <p className="text-muted-foreground mb-4">
+                  We are reachable on call or whatsapp at +91 9810649456 / 9667035805 or <a href="mailto:info@milkyway.com" className="text-primary hover:underline">info@milkyway.com</a>
+                </p>
+                <p className="text-muted-foreground mb-6">
+                  You can also fill up the form below to request a call back
+                </p>
+                <form className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="first-name">First Name</Label>
+                      <Input id="first-name" placeholder="First Name" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="last-name">Last Name</Label>
+                      <Input id="last-name" placeholder="Last Name" />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="phone">Phone (required)</Label>
+                    <Input id="phone" type="tel" required />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message (required)</Label>
+                    <Textarea id="message" required />
+                  </div>
+                  <Button type="submit" variant="outline">Submit</Button>
+                </form>
+              </div>
+              <div>
+                <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4">Our Farm</h2>
+                <div className="space-y-2 text-muted-foreground">
+                  <p>MILKYWAY Dairy Works</p>
+                  <p>Baliawas Village, Near Gwal Pahari</p>
+                  <p>Gurgaon 122002</p>
+                </div>
+                <div className="mt-6">
+                  <Image
+                    src="https://placehold.co/600x400.png"
+                    alt="Map of our farm location"
+                    width={600}
+                    height={400}
+                    className="rounded-lg shadow-lg w-full"
+                    data-ai-hint="map view"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <section className="py-12 md:py-20 bg-card">
           <div className="container mx-auto px-4 max-w-3xl">
             <div className="text-center mb-12">
               <h2 className="font-headline text-3xl md:text-4xl font-bold">Frequently Asked Questions</h2>
