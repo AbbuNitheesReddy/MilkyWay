@@ -16,7 +16,7 @@ const HexagonIcon = ({ children }: { children: React.ReactNode }) => (
 
 export function Footer() {
   return (
-    <footer className="bg-cyan-50/50 border-t">
+    <footer className="bg-card border-t">
       <div className="container mx-auto py-12 px-4 text-center">
 
         <div className="flex justify-center items-center space-x-2 md:space-x-4 mb-12">
