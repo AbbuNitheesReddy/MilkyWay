@@ -1,6 +1,7 @@
 
 import { create } from 'zustand';
-import type { Product } from './data.tsx';
+import type { Product, Order } from './data.tsx';
+import { initialOrders } from './data.tsx';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
 export type CartItem = {
@@ -72,6 +73,24 @@ export const useAuthStore = create<AuthState>()(
         }),
         {
             name: 'auth-storage',
+            storage: createJSONStorage(() => localStorage),
+        }
+    )
+)
+
+type OrderState = {
+    orders: Order[];
+    addOrder: (order: Order) => void;
+}
+
+export const useOrderStore = create<OrderState>()(
+    persist(
+        (set) => ({
+            orders: initialOrders,
+            addOrder: (order: Order) => set((state) => ({ orders: [order, ...state.orders] })),
+        }),
+        {
+            name: 'order-storage',
             storage: createJSONStorage(() => localStorage),
         }
     )

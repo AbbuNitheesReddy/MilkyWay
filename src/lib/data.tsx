@@ -69,18 +69,8 @@ export const products: Product[] = [
   },
 ];
 
-export type Order = {
-  id: string;
-  date: string;
-  status: 'Delivered' | 'Processing' | 'Cancelled' | 'Packed';
-  total: number;
-  items: {
-    productId: string;
-    quantity: number;
-  }[];
-}
 
-export const orders: Order[] = [
+export const initialOrders: Order[] = [
     {
         id: 'MW-86754',
         date: '2023-10-26',
@@ -132,7 +122,7 @@ export const orders: Order[] = [
     },
 ];
 
-type Category = {
+export type Category = {
   name: string;
   icon: React.ReactNode;
   href: string;
@@ -164,3 +154,14 @@ export const branches = [
   { name: "Green Pastures", address: "456 Meadow Rd, Greenfield, CA 90211" },
   { name: "City Creamery", address: "789 Urban Ave, Metroville, CA 90212" },
 ];
+
+export type Order = {
+  id: string;
+  date: string;
+  status: 'Delivered' | 'Processing' | 'Cancelled' | 'Packed';
+  total: number;
+  items: {
+    productId: string;
+    quantity: number;
+  }[];
+}

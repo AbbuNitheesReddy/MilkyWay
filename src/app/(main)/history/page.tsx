@@ -5,10 +5,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { orders, products } from "@/lib/data.tsx";
+import { products } from "@/lib/data.tsx";
 import { Eye, RefreshCw, ChevronDown, Package, Truck, MapPin, User } from "lucide-react";
 import Image from "next/image";
-import { useAuthStore } from "@/lib/store";
+import { useAuthStore, useOrderStore } from "@/lib/store";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
@@ -86,6 +86,7 @@ const OrderTracking = ({ status }: { status: 'Delivered' | 'Processing' | 'Cance
 export default function HistoryPage() {
   const getProduct = (id: string) => products.find(p => p.id === id);
   const { isLoggedIn } = useAuthStore();
+  const { orders } = useOrderStore();
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {

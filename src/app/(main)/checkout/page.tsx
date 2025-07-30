@@ -8,10 +8,11 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { useAuthStore, useCartStore } from "@/lib/store";
+import { useAuthStore, useCartStore, useOrderStore } from "@/lib/store";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { User } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 function AuthWall() {
     return (
@@ -27,8 +28,10 @@ function AuthWall() {
 }
 
 export default function CheckoutPage() {
-    const { items } = useCartStore();
+    const { items, clearCart } = useCartStore();
     const { isLoggedIn } = useAuthStore();
+    const addOrder = useOrderStore((state) => state.addOrder);
+    const router = useRouter();
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
@@ -39,6 +42,22 @@ export default function CheckoutPage() {
     const deliveryFee = 5.00; // Example fee
     const tax = subtotal * 0.08;
     const total = subtotal + tax + deliveryFee;
+    
+    const handlePlaceOrder = () => {
+        const orderItems = items.map(item => ({
+            productId: item.product.id,
+            quantity: item.quantity
+        }));
+        addOrder({
+            id: `MW-${Math.floor(Math.random() * 90000) + 10000}`,
+            date: new Date().toISOString(),
+            status: 'Processing',
+            total: total,
+            items: orderItems,
+        });
+        clearCart();
+        router.push('/history');
+    }
 
 
     if (!isClient) {
@@ -161,7 +180,7 @@ export default function CheckoutPage() {
               <div className="flex justify-between font-bold text-lg"><span>Total</span><span>${total.toFixed(2)}</span></div>
             </CardContent>
             <CardFooter>
-              <Button asChild className="w-full" size="lg"><Link href="/history">Place Order</Link></Button>
+              <Button onClick={handlePlaceOrder} className="w-full" size="lg">Place Order</Button>
             </CardFooter>
           </Card>
         </div>
