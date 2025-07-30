@@ -73,7 +73,7 @@ export default function ProfilePage() {
              <div className="space-y-4">
                 <Label htmlFor="address" className="flex items-center gap-2 text-base"><MapPin className="h-5 w-5 text-primary" /> Delivery Address</Label>
                  <div className="flex gap-2">
-                    <Input id="address" defaultValue="123 Dairy Lane, Mootown, CA 90210" />
+                    <Input id="address" defaultValue={user.address} />
                     <Button variant="ghost" size="icon"><Edit className="h-4 w-4"/></Button>
                 </div>
             </div>

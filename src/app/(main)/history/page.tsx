@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { products } from "@/lib/data.tsx";
-import { Eye, RefreshCw, ChevronDown, Package, Truck, MapPin, User } from "lucide-react";
+import { Eye, RefreshCw, ChevronDown, Package, Truck, MapPin, User, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { useAuthStore, useOrderStore } from "@/lib/store";
 import { useEffect, useState } from "react";
@@ -108,6 +108,17 @@ export default function HistoryPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="font-headline text-4xl md:text-5xl font-bold text-center mb-8">Order History</h1>
+      
+      {orders.length === 0 ? (
+        <Card className="text-center p-12">
+            <ShoppingCart className="h-20 w-20 mx-auto text-muted-foreground mb-4" />
+            <h2 className="font-headline text-2xl mb-2">No Orders Yet</h2>
+            <p className="text-muted-foreground mb-6">You haven't placed any orders with us yet.</p>
+            <Button asChild>
+                <Link href="/products">Start Shopping</Link>
+            </Button>
+        </Card>
+      ) : (
       <Card className="bg-transparent shadow-none border-0">
         <CardContent className="p-0">
           <Accordion type="single" collapsible className="w-full">
@@ -167,6 +178,7 @@ export default function HistoryPage() {
           </Accordion>
         </CardContent>
       </Card>
+      )}
     </div>
   );
 }

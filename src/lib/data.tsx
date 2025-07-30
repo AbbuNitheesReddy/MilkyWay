@@ -1,6 +1,6 @@
 
-import { ShoppingBasket, Leaf, Truck, ChevronRight } from "lucide-react";
 import React from "react";
+import { ShoppingBasket, Leaf, Truck, ChevronRight } from "lucide-react";
 
 export type Product = {
   id: string;
@@ -80,59 +80,6 @@ export type Order = {
     quantity: number;
   }[];
 }
-
-export const initialOrders: Order[] = [
-    {
-        id: 'MW-86754',
-        date: new Date('2023-10-26').toISOString(),
-        status: 'Delivered',
-        total: 19.74,
-        items: [
-            { productId: '1', quantity: 1 },
-            { productId: '3', quantity: 2 },
-            { productId: '4', quantity: 1 },
-        ]
-    },
-    {
-        id: 'MW-86755',
-        date: new Date('2023-10-28').toISOString(),
-        status: 'Packed',
-        total: 12.25,
-        items: [
-            { productId: '2', quantity: 1 },
-            { productId: '5', quantity: 1 },
-        ]
-    },
-    {
-        id: 'MW-86753',
-        date: new Date('2023-10-12').toISOString(),
-        status: 'Delivered',
-        total: 10.00,
-        items: [
-            { productId: '4', quantity: 1 },
-            { productId: '1', quantity: 2 },
-        ]
-    },
-     {
-        id: 'MW-86752',
-        date: new Date('2023-10-11').toISOString(),
-        status: 'Processing',
-        total: 4.20,
-        items: [
-            { productId: '6', quantity: 1 },
-        ]
-    },
-    {
-        id: 'MW-85234',
-        date: new Date('2023-09-18').toISOString(),
-        status: 'Cancelled',
-        total: 6.75,
-        items: [
-            { productId: '3', quantity: 1 },
-        ]
-    },
-];
-
 
 export type Category = {
   name: string;
