@@ -52,7 +52,7 @@ export const useCartStore = create<CartState>()(
     }),
     {
       name: 'cart-storage',
-      storage: createJSONStorage(() => sessionStorage),
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );
@@ -68,11 +68,11 @@ export const useAuthStore = create<AuthState>()(
         (set) => ({
             isLoggedIn: false,
             login: () => set({ isLoggedIn: true }),
-            logout: () => set({ isLoggedIn: false, }),
+            logout: () => set({ items: [], isLoggedIn: false }),
         }),
         {
             name: 'auth-storage',
-            storage: createJSONStorage(() => sessionStorage),
+            storage: createJSONStorage(() => localStorage),
         }
     )
 )
