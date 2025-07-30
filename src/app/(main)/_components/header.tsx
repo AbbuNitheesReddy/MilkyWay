@@ -1,15 +1,16 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, User, MapPin } from "lucide-react";
+import { ShoppingCart, User, Menu } from "lucide-react";
 import { MilkyWayLogo } from "./milky-way-logo";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export function Header() {
   const navItems = [
-    { name: "Products", href: "/products" },
-    { name: "Order History", href: "/history" },
-    { name: "Branches", href: "/branches" },
-    { name: "Milk Calculator", href: "/calculator" },
+    { name: "Home", href: "/" },
+    { name: "All Products", href: "/products" },
+    { name: "About Us", href: "#" },
+    { name: "Contact", href: "#" },
   ];
 
   return (
@@ -20,7 +21,7 @@ export function Header() {
             <MilkyWayLogo />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <Button key={item.name} asChild variant="ghost" className="text-foreground/80 font-semibold">
                 <Link href={item.href}>{item.name}</Link>
@@ -28,19 +29,42 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-4">
-            <Button asChild variant="ghost" size="icon">
+          <div className="flex items-center gap-2">
+            <Button asChild variant="ghost" className="hidden md:inline-flex">
+              <Link href="/login">Login</Link>
+            </Button>
+            <Button asChild>
+              <Link href="/products">Shop Now</Link>
+            </Button>
+            <Button asChild variant="outline" size="icon">
               <Link href="/cart">
                 <ShoppingCart className="h-5 w-5" />
                 <span className="sr-only">Shopping Cart</span>
               </Link>
             </Button>
-            <Button asChild variant="ghost" size="icon">
-              <Link href="/profile">
-                <User className="h-5 w-5" />
-                <span className="sr-only">Profile</span>
-              </Link>
-            </Button>
+            <Sheet>
+                <SheetTrigger asChild>
+                    <Button variant="outline" size="icon" className="md:hidden">
+                        <Menu className="h-5 w-5" />
+                        <span className="sr-only">Open menu</span>
+                    </Button>
+                </SheetTrigger>
+                <SheetContent side="right">
+                    <div className="flex flex-col gap-4 p-4">
+                         <Link href="/" className="flex items-center gap-2 mb-4">
+                            <MilkyWayLogo />
+                        </Link>
+                        {navItems.map((item) => (
+                        <Button key={item.name} asChild variant="ghost" className="justify-start text-lg">
+                            <Link href={item.href}>{item.name}</Link>
+                        </Button>
+                        ))}
+                         <Button asChild variant="outline" className="justify-start text-lg">
+                            <Link href="/profile">My Account</Link>
+                        </Button>
+                    </div>
+                </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>

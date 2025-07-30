@@ -31,12 +31,12 @@ export function ProductCard({ product }: { product: Product }) {
         </div>
       </CardHeader>
       <CardContent className="p-4 flex-grow">
-        <CardTitle className="font-headline text-xl mb-2">{product.name}</CardTitle>
-        <CardDescription>{product.description}</CardDescription>
+        <CardTitle className="font-bold text-lg mb-1">{product.name}</CardTitle>
+        <CardDescription className="text-sm">{product.description}</CardDescription>
       </CardContent>
       <CardFooter className="p-4 flex justify-between items-center">
         <div>
-          <p className="text-xl font-bold text-foreground">${product.price.toFixed(2)}</p>
+          <p className="text-lg font-bold text-foreground">${product.price.toFixed(2)}</p>
           <p className="text-sm text-muted-foreground">{product.size}</p>
         </div>
         <Button onClick={handleAddToCart} aria-label={`Add ${product.name} to cart`}>
