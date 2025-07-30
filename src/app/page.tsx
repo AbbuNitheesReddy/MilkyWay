@@ -11,6 +11,7 @@ import { Footer } from './(main)/_components/footer';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { Chatbot } from '@/components/ui/chatbot';
 
 const categories = [
   { name: 'Milk', icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8 text-primary"><path d="M12 2c-3 0-5.2 2.4-5.2 5.2 0 2.2 1 4 2.2 5.5.5.6.8 1.2.8 1.8v5.5c0 .6.4 1 1 1h2c.6 0 1-.4 1-1V14.5c0-.6.3-1.2.8-1.8 1.2-1.5 2.2-3.3 2.2-5.5C17.2 4.4 15 2 12 2z"/><path d="M12 2v2.5"/></svg>, href: '/products' },
@@ -242,6 +243,7 @@ export default function Home() {
         </section>
       
       <Footer />
+      <Chatbot />
     </>
   );
 }
