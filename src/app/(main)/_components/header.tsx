@@ -1,91 +1,144 @@
+"use client";
 
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Menu, Search } from "lucide-react";
+import { ShoppingCart, Menu, Search, User } from "lucide-react";
 import { MilkyWayLogo } from "./milky-way-logo";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+
+const mainNavItems = [
+    { name: "Home", href: "/" },
+    { name: "All Products", href: "/products" },
+    { name: "About Us", href: "#" },
+    { name: "Contact", href: "#" },
+    { name: "My Orders", href: "/history" },
+];
+
+function Navbar() {
+  return (
+    <nav className="flex items-center justify-between h-16">
+      <Link href="/" className="flex items-center gap-2">
+        <MilkyWayLogo small />
+         <span className="font-headline text-xl font-bold text-primary tracking-widest">
+            MILKYWAY
+        </span>
+      </Link>
+      <div className="hidden md:flex items-center gap-4">
+        {mainNavItems.map((item) => (
+          <Button key={item.name} asChild variant="ghost" className="font-semibold text-muted-foreground">
+            <Link href={item.href}>{item.name}</Link>
+          </Button>
+        ))}
+      </div>
+      <div className="flex items-center gap-2">
+         <Button asChild variant="ghost" size="icon">
+           <Link href="/login">
+            <User className="h-5 w-5" />
+            <span className="sr-only">Login</span>
+           </Link>
+        </Button>
+        <Button asChild variant="ghost" size="icon">
+          <Link href="/cart">
+            <ShoppingCart className="h-5 w-5" />
+            <span className="sr-only">Cart</span>
+          </Link>
+        </Button>
+      </div>
+    </nav>
+  );
+}
+
 
 export function Header() {
-  const topNavItems = [
-    { name: "Blog", href: "#" },
-    { name: "Login", href: "/login" },
-  ];
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrollingUp, setIsScrollingUp] = useState(true);
+  const [lastYPos, setLastYPos] = useState(0);
 
-  const mainNavItems = [
-    { name: "About Us", href: "#" },
-    { name: "A2 Milk", href: "/products" },
-    { name: "Our Cows", href: "#" },
-    { name: "Our Products", href: "/products" },
-    { name: "Farming Practices", href: "#" },
-    { name: "Contact Us", href: "#" },
-  ];
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentYPos = window.scrollY;
+      setIsScrolled(currentYPos > 50);
+      setIsScrollingUp(currentYPos < lastYPos || currentYPos <= 0);
+      setLastYPos(currentYPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastYPos]);
+
 
   return (
-    <header className="bg-card border-b sticky top-0 z-50">
-      <div className="container mx-auto px-4">
-        {/* Top bar */}
-        <div className="flex items-center justify-between h-14 border-b">
-          <Button variant="ghost" size="icon">
-            <Search className="h-5 w-5" />
-            <span className="sr-only">Search</span>
-          </Button>
-          <div className="hidden md:flex items-center gap-2">
-            {topNavItems.map((item) => (
-              <Button key={item.name} asChild variant="ghost" className="text-sm font-semibold">
-                <Link href={item.href}>{item.name}</Link>
-              </Button>
-            ))}
+    <>
+      <header className="bg-card border-b">
+        <div className="container mx-auto px-4">
+          {/* Top bar */}
+          <div className="flex items-center justify-between h-14 border-b">
+            <Button variant="ghost" size="icon">
+              <Search className="h-5 w-5" />
+              <span className="sr-only">Search</span>
+            </Button>
+            <div className="flex items-center gap-2">
+               <Button asChild variant="ghost" className="text-sm font-semibold">
+                    <Link href="/login">Login</Link>
+               </Button>
+                <Button asChild variant="ghost" size="icon">
+                    <Link href="/cart"><ShoppingCart className="h-5 w-5" /></Link>
+                </Button>
+            </div>
           </div>
-          <div className="md:hidden">
-            <Sheet>
-                <SheetTrigger asChild>
-                    <Button variant="outline" size="icon">
-                        <Menu className="h-5 w-5" />
-                        <span className="sr-only">Open menu</span>
-                    </Button>
-                </SheetTrigger>
-                <SheetContent side="right">
-                    <div className="flex flex-col gap-4 p-4">
-                         <Link href="/" className="flex flex-col items-center gap-2 mb-4">
-                            <MilkyWayLogo />
-                        </Link>
-                        {mainNavItems.map((item) => (
-                        <Button key={item.name} asChild variant="ghost" className="justify-start text-lg">
-                            <Link href={item.href}>{item.name}</Link>
-                        </Button>
-                        ))}
-                        <Button asChild variant="link" size="lg" className="font-bold">
-                            <Link href="#">TRY A SAMPLE</Link>
-                        </Button>
-                        <hr/>
-                        {topNavItems.map((item) => (
-                         <Button key={item.name} asChild variant="ghost" className="justify-start text-lg">
-                            <Link href={item.href}>{item.name}</Link>
-                        </Button>
-                        ))}
-                    </div>
-                </SheetContent>
-            </Sheet>
+          
+          {/* Main content */}
+          <div className="flex flex-col items-center justify-center py-6">
+            <Link href="/" className="flex flex-col items-center gap-2">
+              <MilkyWayLogo />
+            </Link>
+            <nav className="hidden md:flex items-center gap-4 mt-6">
+              {mainNavItems.map((item) => (
+                <Button key={item.name} asChild variant="ghost" className="font-semibold text-muted-foreground">
+                  <Link href={item.href}>{item.name}</Link>
+                </Button>
+              ))}
+            </nav>
           </div>
         </div>
-        
-        {/* Main content */}
-        <div className="flex flex-col items-center justify-center py-6">
-          <Link href="/" className="flex flex-col items-center gap-2">
-            <MilkyWayLogo />
-          </Link>
-          <nav className="hidden md:flex items-center gap-4 mt-6">
-            {mainNavItems.map((item) => (
-              <Button key={item.name} asChild variant="ghost" className="font-semibold text-muted-foreground">
-                <Link href={item.href}>{item.name}</Link>
-              </Button>
-            ))}
-             <Button asChild variant="link" size="lg" className="font-bold text-primary">
-                <Link href="#">TRY A SAMPLE</Link>
-            </Button>
-          </nav>
+      </header>
+
+      {/* Sticky Navbar */}
+      <div className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-transform duration-300",
+        isScrolled && isScrollingUp ? "translate-y-0" : "-translate-y-full"
+      )}>
+        <div className="container mx-auto px-4">
+            <div className="bg-background/95 backdrop-blur-sm rounded-xl shadow-lg my-2 px-4">
+                <Navbar />
+            </div>
         </div>
       </div>
-    </header>
+       {/* Mobile Menu Button */}
+       <div className="md:hidden fixed bottom-4 right-4 z-50">
+          <Sheet>
+              <SheetTrigger asChild>
+                  <Button variant="default" size="icon" className="rounded-full h-14 w-14 shadow-lg">
+                      <Menu className="h-6 w-6" />
+                      <span className="sr-only">Open menu</span>
+                  </Button>
+              </SheetTrigger>
+              <SheetContent side="bottom" className="h-3/4 rounded-t-2xl">
+                  <div className="flex flex-col gap-4 p-4">
+                        <Link href="/" className="flex flex-col items-center gap-2 mb-4">
+                          <MilkyWayLogo />
+                      </Link>
+                      {mainNavItems.map((item) => (
+                      <Button key={item.name} asChild variant="ghost" className="justify-center text-lg py-6">
+                          <Link href={item.href}>{item.name}</Link>
+                      </Button>
+                      ))}
+                  </div>
+              </SheetContent>
+          </Sheet>
+        </div>
+    </>
   );
 }
