@@ -1,6 +1,6 @@
 
 import { create } from 'zustand';
-import type { Product, Order } from './data.tsx';
+import type { Product, Order } from './data';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
 export type CartItem = {
@@ -57,10 +57,29 @@ export const useCartStore = create<CartState>()(
   )
 );
 
+type Address = {
+    id: string;
+    type: 'Home' | 'Work';
+    line1: string;
+    city: string;
+    state: string;
+    zip: string;
+    isPrimary: boolean;
+}
+
+type PaymentMethod = {
+    id: string;
+    type: 'Visa' | 'Mastercard';
+    last4: string;
+    isPrimary: boolean;
+}
+
+
 type User = {
     name: string;
     email: string;
-    address: string;
+    addresses: Address[];
+    paymentMethods: PaymentMethod[];
 }
 
 type AuthState = {
@@ -73,7 +92,13 @@ type AuthState = {
 const mockUser: User = {
     name: "John Doe",
     email: "johndoe@milkyway.com",
-    address: "123 Dairy Lane, Mootown, CA 90210"
+    addresses: [
+        { id: 'addr1', type: 'Home', line1: "123 Dairy Lane", city: "Mootown", state: "CA", zip: "90210", isPrimary: true },
+        { id: 'addr2', type: 'Work', line1: "456 Corporate Blvd", city: "Metropolis", state: "NY", zip: "10001", isPrimary: false },
+    ],
+    paymentMethods: [
+        { id: 'pay1', type: 'Visa', last4: '1234', isPrimary: true }
+    ]
 }
 
 export const useAuthStore = create<AuthState>()(
