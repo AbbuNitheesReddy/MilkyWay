@@ -1,3 +1,4 @@
+
 export type Product = {
   id: string;
   name: string;
@@ -86,7 +87,7 @@ export const products: Product[] = [
 export type Order = {
   id: string;
   date: string;
-  status: 'Delivered' | 'Processing' | 'Cancelled';
+  status: 'Delivered' | 'Processing' | 'Cancelled' | 'Packed';
   total: number;
   items: {
     productId: string;
@@ -107,6 +108,17 @@ export const orders: Order[] = [
         ]
     },
     {
+        id: 'MW-86755',
+        date: '2023-10-28',
+        status: 'Packed',
+        total: 12.25,
+        items: [
+            { productId: '2', quantity: 1 },
+            { productId: '5', quantity: 1 },
+            { productId: '8', quantity: 1 },
+        ]
+    },
+    {
         id: 'MW-86753',
         date: '2023-10-12',
         status: 'Delivered',
@@ -114,6 +126,15 @@ export const orders: Order[] = [
         items: [
             { productId: '4', quantity: 1 },
             { productId: '2', quantity: 1 },
+        ]
+    },
+     {
+        id: 'MW-86752',
+        date: '2023-10-11',
+        status: 'Processing',
+        total: 4.20,
+        items: [
+            { productId: '6', quantity: 1 },
         ]
     },
     {

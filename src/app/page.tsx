@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -6,6 +7,72 @@ import { products } from '@/lib/data';
 import { ProductCard } from './(main)/_components/product-card';
 import { Header } from './(main)/_components/header';
 import { Footer } from './(main)/_components/footer';
+
+function WhyChooseUs() {
+    return (
+        <section className="relative py-16 md:py-24">
+            <div className="absolute inset-0 bg-black opacity-40 z-0"></div>
+            <Image
+                src="https://placehold.co/1600x900.png"
+                alt="Lush green pastures"
+                fill
+                className="object-cover z-[-1]"
+                data-ai-hint="green pastures"
+            />
+            <div className="container mx-auto px-4 relative z-10 text-center text-white">
+                 <h2 className="font-headline text-3xl md:text-4xl font-bold text-shadow-lg">Why Choose MilkyWay?</h2>
+                 <p className="max-w-3xl mx-auto mt-4 text-shadow">
+                    We're not just a dairy; we're a promise of purity, freshness, and care, from our farm to your family.
+                 </p>
+                <div className="grid md:grid-cols-3 gap-8 mt-12">
+                    <div className="p-6 rounded-lg">
+                        <h3 className="font-headline text-2xl font-bold">Organic Farming</h3>
+                        <p className="mt-2">Our cows graze on organic pastures, free from pesticides and artificial fertilizers, ensuring the purest milk.</p>
+                    </div>
+                    <div className="p-6 rounded-lg">
+                         <h3 className="font-headline text-2xl font-bold">Happy Cows</h3>
+                        <p className="mt-2">We prioritize animal welfare, providing a stress-free environment for our cows to roam and live naturally.</p>
+                    </div>
+                    <div className="p-6 rounded-lg">
+                        <h3 className="font-headline text-2xl font-bold">Farm to Doorstep</h3>
+                        <p className="mt-2">Experience unmatched freshness with our swift delivery service, bringing nature's goodness right to you.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+function OurCowsSection() {
+    return (
+        <section className="py-16 md:py-24 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4">About Our Farm & Cows</h2>
+                <p className="text-muted-foreground mb-4">
+                  At MilkyWay, we believe that happy cows produce the best milk. Our family-owned farm provides a nurturing environment where our cows graze freely on lush, green pastures. We are committed to sustainable farming practices, ensuring the health of our herd and the land we all share.
+                </p>
+                <p className="text-muted-foreground">
+                  The result is a range of dairy products that are not only delicious but also wholesome and packed with natural goodness. From our farm to your family, we bring you the taste of pure dedication.
+                </p>
+              </div>
+              <div>
+                <Image
+                  src="https://placehold.co/600x400.png"
+                  alt="Happy cows grazing in a field"
+                  width={600}
+                  height={400}
+                  className="rounded-lg shadow-lg"
+                  data-ai-hint="happy cows"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+    )
+}
+
 
 export default function Home() {
   const featuredProducts = products.slice(0, 4);
@@ -67,31 +134,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-16 md:py-24 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4">About Our Farm & Cows</h2>
-                <p className="text-muted-foreground mb-4">
-                  At MilkyWay, we believe that happy cows produce the best milk. Our family-owned farm provides a nurturing environment where our cows graze freely on lush, green pastures. We are committed to sustainable farming practices, ensuring the health of our herd and the land we all share.
-                </p>
-                <p className="text-muted-foreground">
-                  The result is a range of dairy products that are not only delicious but also wholesome and packed with natural goodness. From our farm to your family, we bring you the taste of pure dedication.
-                </p>
-              </div>
-              <div>
-                <Image
-                  src="https://placehold.co/600x400.png"
-                  alt="Happy cows grazing in a field"
-                  width={600}
-                  height={400}
-                  className="rounded-lg shadow-lg"
-                  data-ai-hint="happy cows"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+        <WhyChooseUs />
+
+        <OurCowsSection />
 
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">

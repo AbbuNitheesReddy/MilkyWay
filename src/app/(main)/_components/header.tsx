@@ -1,12 +1,14 @@
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, User } from "lucide-react";
+import { ShoppingCart, User, MapPin } from "lucide-react";
 import { MilkyWayLogo } from "./milky-way-logo";
 
 export function Header() {
   const navItems = [
     { name: "Products", href: "/products" },
     { name: "Order History", href: "/history" },
+    { name: "Branches", href: "/branches" },
     { name: "Milk Calculator", href: "/calculator" },
   ];
 
@@ -34,9 +36,9 @@ export function Header() {
               </Link>
             </Button>
             <Button asChild variant="ghost" size="icon">
-              <Link href="/login">
+              <Link href="/profile">
                 <User className="h-5 w-5" />
-                <span className="sr-only">Login</span>
+                <span className="sr-only">Profile</span>
               </Link>
             </Button>
           </div>

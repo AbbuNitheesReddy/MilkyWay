@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -9,11 +10,11 @@ import Link from "next/link";
 
 export default function CheckoutPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 bg-transparent">
       <h1 className="font-headline text-4xl md:text-5xl font-bold text-center mb-8">Checkout</h1>
       <div className="grid md:grid-cols-3 gap-8">
         <form className="md:col-span-2 space-y-8">
-          <Card>
+          <Card className="bg-white">
             <CardHeader>
               <CardTitle className="font-headline text-2xl">Delivery Address</CardTitle>
             </CardHeader>
@@ -49,7 +50,7 @@ export default function CheckoutPage() {
               </div>
             </CardContent>
           </Card>
-           <Card>
+           <Card className="bg-white">
             <CardHeader>
               <CardTitle className="font-headline text-2xl">Delivery Time</CardTitle>
             </CardHeader>
@@ -72,7 +73,7 @@ export default function CheckoutPage() {
               </RadioGroup>
             </CardContent>
           </Card>
-           <Card>
+           <Card className="bg-white">
             <CardHeader>
               <CardTitle className="font-headline text-2xl">Payment</CardTitle>
             </CardHeader>
@@ -95,7 +96,7 @@ export default function CheckoutPage() {
           </Card>
         </form>
         <div className="md:col-span-1">
-          <Card className="sticky top-24">
+          <Card className="sticky top-24 bg-white">
             <CardHeader>
               <CardTitle className="font-headline text-2xl">Order Summary</CardTitle>
             </CardHeader>
