@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { orders, products } from "@/lib/data";
+import { orders, products } from "@/lib/data.tsx";
 import { Eye, RefreshCw, ChevronDown, Package, Truck, MapPin, User } from "lucide-react";
 import Image from "next/image";
 import { useAuthStore } from "@/lib/store";

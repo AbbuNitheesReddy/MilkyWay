@@ -1,4 +1,5 @@
-import { products } from "@/lib/data";
+
+import { products } from "@/lib/data.tsx";
 import { ProductCard } from "../_components/product-card";
 
 export default function ProductsPage() {

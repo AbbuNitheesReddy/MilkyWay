@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useFormState, useFormStatus } from "react-dom";
@@ -5,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { handleCalculation } from "../actions";
 import { milkCalculatorSchema, MilkCalculatorValues } from "@/lib/schemas";
-import { products } from "@/lib/data";
+import { products } from "@/lib/data.tsx";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";

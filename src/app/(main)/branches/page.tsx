@@ -1,14 +1,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { branches } from "@/lib/data.tsx";
 import { MapPin } from "lucide-react";
 import Image from "next/image";
-
-const branches = [
-  { name: "Mootown Central", address: "123 Dairy Lane, Mootown, CA 90210" },
-  { name: "Green Pastures", address: "456 Meadow Rd, Greenfield, CA 90211" },
-  { name: "City Creamery", address: "789 Urban Ave, Metroville, CA 90212" },
-];
 
 export default function BranchSelectionPage() {
   return (

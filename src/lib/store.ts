@@ -1,6 +1,6 @@
 
 import { create } from 'zustand';
-import type { Product } from './data';
+import type { Product } from './data.tsx';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
 export type CartItem = {

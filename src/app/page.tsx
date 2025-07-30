@@ -3,8 +3,8 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ChevronRight, ShoppingBasket, Truck, Leaf, Star, Quote } from 'lucide-react';
-import { products } from '@/lib/data';
+import { ArrowRight, Star, Quote } from 'lucide-react';
+import { products, categories, howItWorks, testimonials } from '@/lib/data.tsx';
 import { ProductCard } from './(main)/_components/product-card';
 import { Header } from './(main)/_components/header';
 import { Footer } from './(main)/_components/footer';
@@ -13,26 +13,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Chatbot } from '@/components/ui/chatbot';
 
-const categories = [
-  { name: 'Milk', icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8 text-primary"><path d="M12 2c-3 0-5.2 2.4-5.2 5.2 0 2.2 1 4 2.2 5.5.5.6.8 1.2.8 1.8v5.5c0 .6.4 1 1 1h2c.6 0 1-.4 1-1V14.5c0-.6.3-1.2.8-1.8 1.2-1.5 2.2-3.3 2.2-5.5C17.2 4.4 15 2 12 2z"/><path d="M12 2v2.5"/></svg>, href: '/products' },
-  { name: 'Ghee', icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8 text-primary"><path d="M20.2 7.8 12 16l-8.2-8.2a2.4 2.4 0 0 1 3.4-3.4L12 9l4.8-4.8a2.4 2.4 0 0 1 3.4 3.4Z"/><path d="M7.8 20.2 16 12l-8.2-8.2"/></svg>, href: '/products' },
-  { name: 'Paneer', icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8 text-primary"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 8h10"/><path d="M7 12h10"/><path d="M7 16h10"/></svg>, href: '/products' },
-  { name: 'Curd', icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8 text-primary"><path d="M8 11h.01"/><path d="M12 11h.01"/><path d="M16 11h.01"/><path d="M21 14c0 2.2-1.8 4-4 4H7c-2.2 0-4-1.8-4-4v- organizações"/><path d="M21 9a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2c0 .8.2 1.5.5 2.1"/></svg>, href: '/products' },
-  { name: 'Butter', icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8 text-primary"><path d="M20 9H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Z"/><path d="M5 9V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"/></svg>, href: '/products' },
-  { name: 'More', icon: <ChevronRight/>, href: '/products' },
-];
-
-const howItWorks = [
-    { title: "Subscribe & Choose", description: "Select your favorite dairy products and a delivery schedule that works for you.", icon: <ShoppingBasket className="h-10 w-10 text-primary" /> },
-    { title: "Freshly Prepared", description: "We prepare your order with the freshest ingredients from our farm on delivery day.", icon: <Leaf className="h-10 w-10 text-primary" /> },
-    { title: "Doorstep Delivery", description: "Our team delivers your order right to your doorstep, ensuring maximum freshness.", icon: <Truck className="h-10 w-10 text-primary" /> }
-];
-
-const testimonials = [
-  { name: "Priya S.", quote: "The best and the purest milk I have ever had. The quality is unmatched and my kids love it!", rating: 5 },
-  { name: "Rohan M.", quote: "MilkyWay has become a part of our daily routine. The paneer is so soft and the ghee has an amazing aroma. Highly recommended!", rating: 5 },
-  { name: "Anjali K.", quote: "I love the convenience of their subscription service. Fresh milk delivered to my door every morning is a blessing.", rating: 5 },
-];
 
 export default function Home() {
   const featuredProducts = products.slice(0, 4);
