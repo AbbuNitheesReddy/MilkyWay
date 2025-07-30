@@ -43,7 +43,7 @@ function CartButton() {
 }
 
 
-function Navbar({isLoggedIn, logout}: {isLoggedIn: boolean, logout: () => void}) {
+export function Navbar({isLoggedIn, logout}: {isLoggedIn: boolean, logout: () => void}) {
   const router = useRouter();
 
   const handleLogout = () => {
