@@ -8,6 +8,7 @@
  */
 
 import {ai} from '@/ai/genkit';
+import { getOrderStatus } from '../tools/get-order-status';
 import {z} from 'genkit';
 
 const ChatInputSchema = z.object({
@@ -28,7 +29,10 @@ const prompt = ai.definePrompt({
   name: 'chatPrompt',
   input: {schema: ChatInputSchema},
   output: {schema: ChatOutputSchema},
+  tools: [getOrderStatus],
   prompt: `You are a helpful assistant for MilkyWay Dairy. Your goal is to answer user questions and assist them.
+  
+  If the user asks about their order status, use the getOrderStatus tool to provide them with the information.
   
   User message: {{{message}}}
   

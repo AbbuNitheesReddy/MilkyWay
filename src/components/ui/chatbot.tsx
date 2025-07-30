@@ -30,7 +30,7 @@ export function Chatbot() {
   useEffect(() => {
     if (isOpen) {
         setMessages([{
-            text: "Hello! How can I help you today?",
+            text: "Hello! I'm the MilkyWay assistant. I can help you check your order status. Just ask!",
             sender: "bot"
         }]);
     }
@@ -129,7 +129,7 @@ export function Chatbot() {
               <Input
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Type your message..."
+                placeholder="Ask about your order..."
                 autoComplete="off"
                 disabled={isLoading}
               />
