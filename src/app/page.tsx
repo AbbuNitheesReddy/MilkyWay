@@ -151,7 +151,7 @@ export default function Home() {
                 </div>
                 <div className="grid md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
                     {howItWorks.map((step, index) => (
-                        <div key={index} className="p-6 bg-card rounded-lg shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                        <div key={index} className="p-6 bg-card rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                             <div className="flex items-center justify-center bg-primary/10 rounded-full w-20 h-20 mx-auto mb-6">
                                 {step.icon}
                             </div>
@@ -170,7 +170,7 @@ export default function Home() {
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {testimonials.map((testimonial) => (
-                <div key={testimonial.name} className="bg-background p-8 rounded-lg shadow-md flex flex-col items-center text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div key={testimonial.name} className="bg-background p-8 rounded-lg shadow-md flex flex-col items-center text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                   <Quote className="h-8 w-8 text-primary mb-4" />
                   <p className="text-muted-foreground italic mb-6 flex-grow">"{testimonial.quote}"</p>
                   <div className="flex items-center mb-2">

@@ -19,7 +19,7 @@ export function ProductCard({ product }: { product: Product }) {
   };
 
   return (
-    <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+    <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
       <CardHeader className="p-0">
         <div className="aspect-square relative">
             <Image

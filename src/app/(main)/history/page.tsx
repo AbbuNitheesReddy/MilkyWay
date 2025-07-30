@@ -53,12 +53,12 @@ export default function HistoryPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="font-headline text-4xl md:text-5xl font-bold text-center mb-8">Order History</h1>
-      <Card className="bg-transparent">
+      <Card className="bg-transparent shadow-none border-0">
         <CardContent className="p-0">
           <Accordion type="single" collapsible className="w-full">
             {orders.map((order) => (
               <AccordionItem value={order.id} key={order.id} className="border-b-0">
-                <Card className="mb-4">
+                <Card className="mb-4 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                   <AccordionTrigger className="w-full p-4 hover:no-underline">
                     <div className="flex justify-between items-center w-full">
                         <div className="text-left">
@@ -114,4 +114,3 @@ export default function HistoryPage() {
     </div>
   );
 }
-

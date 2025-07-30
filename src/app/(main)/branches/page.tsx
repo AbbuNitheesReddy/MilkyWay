@@ -21,26 +21,26 @@ export default function BranchSelectionPage() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {branches.map((branch) => (
-          <Card key={branch.name} className="flex flex-col">
-            <CardHeader>
+          <Card key={branch.name} className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+             <CardHeader className="p-0">
                 <div className="aspect-video relative">
                      <Image
                         src="https://placehold.co/400x300.png"
                         alt={`${branch.name} branch`}
                         fill
-                        className="object-cover rounded-t-lg"
+                        className="object-cover"
                         data-ai-hint="store front"
                     />
                 </div>
             </CardHeader>
-            <CardContent className="flex-grow space-y-2">
+            <CardContent className="p-6 flex-grow space-y-2">
               <CardTitle className="font-headline">{branch.name}</CardTitle>
               <CardDescription className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-1 shrink-0" />
                 <span>{branch.address}</span>
               </CardDescription>
             </CardContent>
-            <div className="p-6 pt-0">
+            <div className="p-6 pt-0 mt-auto">
                 <Button className="w-full">Select Branch</Button>
             </div>
           </Card>
