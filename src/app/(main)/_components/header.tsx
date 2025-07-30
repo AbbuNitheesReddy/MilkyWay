@@ -21,7 +21,6 @@ function Navbar() {
   return (
     <nav className="flex items-center justify-between h-16">
       <Link href="/" className="flex items-center gap-2">
-        <MilkyWayLogo small />
          <span className="font-headline text-xl font-bold text-primary tracking-widest">
             MILKYWAY
         </span>
@@ -56,20 +55,16 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const header = document.getElementById('main-header');
-    if (!header) return;
+    const handleScroll = () => {
+      const header = document.getElementById('main-header');
+      if (header) {
+        setIsScrolled(window.scrollY > header.offsetHeight);
+      }
+    };
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsScrolled(!entry.isIntersecting);
-      },
-      { rootMargin: "0px", threshold: 0 }
-    );
-
-    observer.observe(header);
-
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      observer.unobserve(header);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
