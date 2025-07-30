@@ -15,7 +15,7 @@ export const products: Product[] = [
     description: 'Creamy, rich, and full of natural goodness. Perfect for drinking, cooking, and baking.',
     price: 3.50,
     image: 'https://placehold.co/400x400.png',
-    hint: 'milk bottle',
+    hint: 'glass milk',
     size: '1 Gallon',
   },
   {
@@ -24,7 +24,7 @@ export const products: Product[] = [
     description: 'All the essential nutrients with less fat. A light and healthy choice for your family.',
     price: 3.25,
     image: 'https://placehold.co/400x400.png',
-    hint: 'milk carton',
+    hint: 'pouring milk',
     size: '1 Gallon',
   },
   {
@@ -33,7 +33,7 @@ export const products: Product[] = [
     description: 'Thick, creamy, and packed with protein. A delicious and healthy breakfast or snack.',
     price: 4.99,
     image: 'https://placehold.co/400x400.png',
-    hint: 'yogurt container',
+    hint: 'greek yogurt',
     size: '32 oz',
   },
   {
@@ -42,7 +42,7 @@ export const products: Product[] = [
     description: 'Made from the cream of grass-fed cows. Adds rich flavor to any dish.',
     price: 5.50,
     image: 'https://placehold.co/400x400.png',
-    hint: 'butter stick',
+    hint: 'butter dish',
     size: '8 oz',
   },
   {
@@ -51,7 +51,7 @@ export const products: Product[] = [
     description: 'Aged for over 12 months for a complex, nutty flavor. Great for snacking or melting.',
     price: 6.75,
     image: 'https://placehold.co/400x400.png',
-    hint: 'cheese block',
+    hint: 'cheddar cheese',
     size: '8 oz Block',
   },
   {
@@ -60,7 +60,7 @@ export const products: Product[] = [
     description: 'A fermented milk drink with a tangy taste, loaded with beneficial probiotics for gut health.',
     price: 4.20,
     image: 'https://placehold.co/400x400.png',
-    hint: 'kefir bottle',
+    hint: 'kefir drink',
     size: '32 fl oz',
   },
     {
@@ -69,7 +69,7 @@ export const products: Product[] = [
     description: 'Real dairy, just without the lactose. Easy to digest and enjoy.',
     price: 4.50,
     image: 'https://placehold.co/400x400.png',
-    hint: 'milk carton purple',
+    hint: 'purple milk',
     size: '1/2 Gallon',
   },
   {
@@ -78,7 +78,7 @@ export const products: Product[] = [
     description: 'The secret to luscious sauces, soups, and desserts. Rich and indulgent.',
     price: 3.80,
     image: 'https://placehold.co/400x400.png',
-    hint: 'cream carton',
+    hint: 'pouring cream',
     size: '1 Pint',
   },
 ];
