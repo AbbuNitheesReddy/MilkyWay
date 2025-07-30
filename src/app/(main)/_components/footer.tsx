@@ -40,8 +40,8 @@ export function Footer() {
         </div>
         
         <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground font-semibold tracking-wider">
-          <Link href="#" className="hover:text-primary">CONTACT US</Link>
-          <Link href="#" className="hover:text-primary">TRY A SAMPLE</Link>
+          <Link href="/contact" className="hover:text-primary">CONTACT US</Link>
+          <Link href="/branches" className="hover:text-primary">OUR BRANCHES</Link>
           <Link href="#" className="hover:text-primary">FARMING PRACTICES</Link>
           <Link href="#" className="hover:text-primary">PRIVACY POLICY</Link>
           <Link href="#" className="hover:text-primary">TERMS OF USE</Link>

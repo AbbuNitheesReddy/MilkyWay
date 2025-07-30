@@ -15,8 +15,8 @@ import { useRouter } from "next/navigation";
 const mainNavItems = [
     { name: "Home", href: "/" },
     { name: "All Products", href: "/products" },
-    { name: "About Us", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "About Us", href: "/about" },
+    { name: "Contact", href: "/contact" },
 ];
 
 function CartButton() {

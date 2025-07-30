@@ -61,7 +61,7 @@ export default function LoginPage() {
                 <div className="flex items-center justify-between">
                   <Label htmlFor="password">Password</Label>
                   <Button variant="link" size="sm" asChild className="p-0 h-auto">
-                    <Link href="#">Forgot password?</Link>
+                    <Link href="/">Forgot password?</Link>
                   </Button>
                 </div>
                 <Input id="password" type="password" required />
@@ -87,7 +87,7 @@ export default function LoginPage() {
             <div className="mt-6 text-center text-sm">
               Don&apos;t have an account?{" "}
               <Button variant="link" size="sm" asChild className="p-0 h-auto">
-                <Link href="#">Sign up</Link>
+                <Link href="/">Sign up</Link>
               </Button>
             </div>
           </CardContent>
