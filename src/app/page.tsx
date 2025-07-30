@@ -118,7 +118,7 @@ export default function Home() {
                   We follow a completely automated, hands-free milking process, ensuring the utmost hygiene. The milk is chilled instantly to preserve its freshness and nutrients, right until it reaches your doorstep.
                 </p>
                  <Button asChild size="lg" variant="link" className="px-0">
-                    <Link href="#">Learn More <ArrowRight className="ml-2 h-5 w-5" /></Link>
+                    <Link href="/about">Learn More <ArrowRight className="ml-2 h-5 w-5" /></Link>
                  </Button>
               </div>
             </div>
