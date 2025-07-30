@@ -6,7 +6,7 @@ export default function MainLayout({
 }) {
   return (
     <div className="flex flex-col min-h-screen">
-      <main className="flex-grow bg-card">
+      <main className="flex-grow bg-background">
         {children}
       </main>
     </div>

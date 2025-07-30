@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ChevronRight, ShoppingBasket, Truck, Leaf, Star, Quote, Facebook, Instagram, Twitter } from 'lucide-react';
+import { ArrowRight, ChevronRight, ShoppingBasket, Truck, Leaf, Star, Quote } from 'lucide-react';
 import { products } from '@/lib/data';
 import { ProductCard } from './(main)/_components/product-card';
 import { Header } from './(main)/_components/header';
@@ -37,9 +37,9 @@ export default function Home() {
   const featuredProducts = products.slice(0, 4);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <>
       <Header />
-      <main className="flex-grow bg-background">
+      
         <section className="relative h-[60vh] md:h-[80vh] flex items-center justify-center text-center text-white bg-blue-100">
           <Image
             src="https://storage.googleapis.com/aai-web-samples/milky-way-hero.png"
@@ -62,7 +62,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-16 bg-background">
+        <section className="py-16">
           <div className="container mx-auto px-4 text-center max-w-4xl">
             <h2 className="text-xl md:text-2xl font-bold tracking-wider mb-6">
               WE DELIVER FRESH AND PURE A2 MILK PRODUCED BY OUR INDIGENOUS-BREED COWS WITHIN 3 HOURS OF MILKING, TO GURGAON & SOUTH DELHI.
@@ -73,7 +73,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-16 bg-card">
+        <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="font-headline text-3xl md:text-4xl font-bold">Shop by Category</h2>
@@ -91,7 +91,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-16 bg-background">
+        <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="font-headline text-3xl md:text-4xl font-bold">Our Bestsellers</h2>
@@ -114,7 +114,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-16 bg-card">
+        <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="order-2 md:order-1">
@@ -143,7 +143,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-16 bg-background">
+        <section className="py-16">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <h2 className="font-headline text-3xl md:text-4xl font-bold">How It Works</h2>
@@ -163,7 +163,7 @@ export default function Home() {
             </div>
         </section>
 
-        <section className="py-16 bg-card">
+        <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="font-headline text-3xl md:text-4xl font-bold">What Our Customers Say</h2>
@@ -183,7 +183,7 @@ export default function Home() {
           </div>
         </section>
         
-        <section className="py-16 bg-background">
+        <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-16 items-start">
               <div>
@@ -240,8 +240,8 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </main>
+      
       <Footer />
-    </div>
+    </>
   );
 }
