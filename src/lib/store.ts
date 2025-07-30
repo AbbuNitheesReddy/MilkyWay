@@ -58,18 +58,30 @@ export const useCartStore = create<CartState>()(
   )
 );
 
+type User = {
+    name: string;
+    email: string;
+}
+
 type AuthState = {
     isLoggedIn: boolean;
+    user: User | null;
     login: () => void;
     logout: () => void;
+}
+
+const mockUser: User = {
+    name: "John Doe",
+    email: "johndoe@milkyway.com"
 }
 
 export const useAuthStore = create<AuthState>()(
     persist(
         (set) => ({
             isLoggedIn: false,
-            login: () => set({ isLoggedIn: true }),
-            logout: () => set({ items: [], isLoggedIn: false }),
+            user: null,
+            login: () => set({ isLoggedIn: true, user: mockUser }),
+            logout: () => set({ isLoggedIn: false, user: null }),
         }),
         {
             name: 'auth-storage',

@@ -26,7 +26,7 @@ function AuthWall() {
 }
 
 export default function ProfilePage() {
-  const { isLoggedIn } = useAuthStore();
+  const { isLoggedIn, user } = useAuthStore();
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function ProfilePage() {
     return null; 
   }
 
-  if (!isLoggedIn) {
+  if (!isLoggedIn || !user) {
       return (
          <div className="container mx-auto px-4 py-8 bg-transparent">
              <AuthWall />
@@ -53,12 +53,12 @@ export default function ProfilePage() {
           <CardHeader>
             <div className="flex items-center gap-4">
               <Avatar className="h-20 w-20">
-                <AvatarImage src="https://placehold.co/100x100.png" alt="User" data-ai-hint="user avatar" />
-                <AvatarFallback>JD</AvatarFallback>
+                <AvatarImage src="https://placehold.co/100x100.png" alt={user.name} data-ai-hint="user avatar" />
+                <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
               </Avatar>
               <div>
-                <CardTitle className="font-headline text-3xl">John Doe</CardTitle>
-                <CardDescription>johndoe@milkyway.com</CardDescription>
+                <CardTitle className="font-headline text-3xl">{user.name}</CardTitle>
+                <CardDescription>{user.email}</CardDescription>
               </div>
             </div>
           </CardHeader>
@@ -66,7 +66,7 @@ export default function ProfilePage() {
             <div className="space-y-4">
                 <Label htmlFor="name" className="flex items-center gap-2 text-base"><User className="h-5 w-5 text-primary" /> Full Name</Label>
                 <div className="flex gap-2">
-                    <Input id="name" defaultValue="John Doe" />
+                    <Input id="name" defaultValue={user.name} />
                     <Button variant="ghost" size="icon"><Edit className="h-4 w-4"/></Button>
                 </div>
             </div>

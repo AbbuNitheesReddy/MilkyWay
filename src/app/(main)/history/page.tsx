@@ -134,10 +134,11 @@ export default function HistoryPage() {
                         <h4 className="font-semibold mb-4 text-lg">Order Details</h4>
                         {order.items.map(item => {
                             const product = getProduct(item.productId);
+                            if (!product) return null;
                             return (
                                 <div key={item.productId} className="flex justify-between items-center mb-2">
-                                    <span>{product?.name} x {item.quantity}</span>
-                                    <span>${(product!.price * item.quantity).toFixed(2)}</span>
+                                    <span>{product.name} x {item.quantity}</span>
+                                    <span>${(product.price * item.quantity).toFixed(2)}</span>
                                 </div>
                             )
                         })}

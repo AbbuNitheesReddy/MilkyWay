@@ -70,10 +70,21 @@ export const products: Product[] = [
 ];
 
 
+export type Order = {
+  id: string;
+  date: string;
+  status: 'Delivered' | 'Processing' | 'Cancelled' | 'Packed';
+  total: number;
+  items: {
+    productId: string;
+    quantity: number;
+  }[];
+}
+
 export const initialOrders: Order[] = [
     {
         id: 'MW-86754',
-        date: '2023-10-26',
+        date: new Date('2023-10-26').toISOString(),
         status: 'Delivered',
         total: 19.74,
         items: [
@@ -84,7 +95,7 @@ export const initialOrders: Order[] = [
     },
     {
         id: 'MW-86755',
-        date: '2023-10-28',
+        date: new Date('2023-10-28').toISOString(),
         status: 'Packed',
         total: 12.25,
         items: [
@@ -94,7 +105,7 @@ export const initialOrders: Order[] = [
     },
     {
         id: 'MW-86753',
-        date: '2023-10-12',
+        date: new Date('2023-10-12').toISOString(),
         status: 'Delivered',
         total: 10.00,
         items: [
@@ -104,7 +115,7 @@ export const initialOrders: Order[] = [
     },
      {
         id: 'MW-86752',
-        date: '2023-10-11',
+        date: new Date('2023-10-11').toISOString(),
         status: 'Processing',
         total: 4.20,
         items: [
@@ -113,7 +124,7 @@ export const initialOrders: Order[] = [
     },
     {
         id: 'MW-85234',
-        date: '2023-09-18',
+        date: new Date('2023-09-18').toISOString(),
         status: 'Cancelled',
         total: 6.75,
         items: [
@@ -121,6 +132,7 @@ export const initialOrders: Order[] = [
         ]
     },
 ];
+
 
 export type Category = {
   name: string;
@@ -154,14 +166,3 @@ export const branches = [
   { name: "Green Pastures", address: "456 Meadow Rd, Greenfield, CA 90211" },
   { name: "City Creamery", address: "789 Urban Ave, Metroville, CA 90212" },
 ];
-
-export type Order = {
-  id: string;
-  date: string;
-  status: 'Delivered' | 'Processing' | 'Cancelled' | 'Packed';
-  total: number;
-  items: {
-    productId: string;
-    quantity: number;
-  }[];
-}
