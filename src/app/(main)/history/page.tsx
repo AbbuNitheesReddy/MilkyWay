@@ -7,44 +7,61 @@ import { orders, products } from "@/lib/data";
 import { Eye, RefreshCw, ChevronDown, Package, Truck, MapPin } from "lucide-react";
 import Image from "next/image";
 
-const OrderTracking = ({ status }: { status: 'Delivered' | 'Processing' | 'Cancelled' | 'Packed' }) => (
-    <div className="p-4">
-        <h4 className="font-semibold mb-4 text-lg">Order Status</h4>
-        <div className="flex items-center justify-between">
-            <div className="flex flex-col items-center">
-                <div className={`h-12 w-12 rounded-full flex items-center justify-center ${status === 'Processing' || status === 'Packed' || status === 'Delivered' ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
-                    <Package />
-                </div>
-                <p className="text-sm mt-2">Processing</p>
+const OrderTracking = ({ status }: { status: 'Delivered' | 'Processing' | 'Cancelled' | 'Packed' }) => {
+    
+    const isProcessing = status === 'Processing' || status === 'Packed' || status === 'Delivered';
+    const isPacked = status === 'Packed' || status === 'Delivered';
+    const isDelivered = status === 'Delivered';
+    const isCancelled = status === 'Cancelled';
+
+    if (isCancelled) {
+        return (
+             <div className="p-4 text-center">
+                <h4 className="font-semibold text-lg text-destructive">Order Cancelled</h4>
+                <p className="text-muted-foreground">This order has been cancelled.</p>
             </div>
-            <div className={`flex-grow h-1 mx-2 ${status === 'Packed' || status === 'Delivered' ? 'bg-primary' : 'bg-muted'}`}></div>
-            <div className="flex flex-col items-center">
-                <div className={`h-12 w-12 rounded-full flex items-center justify-center ${status === 'Packed' || status === 'Delivered' ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
-                    <Truck />
+        )
+    }
+
+    return (
+        <div className="p-4">
+            <h4 className="font-semibold mb-4 text-lg">Order Status</h4>
+            <div className="flex items-center justify-between">
+                <div className="flex flex-col items-center">
+                    <div className={`h-12 w-12 rounded-full flex items-center justify-center ${isProcessing ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
+                        <Package />
+                    </div>
+                    <p className="text-sm mt-2">Processing</p>
                 </div>
-                <p className="text-sm mt-2">Out for Delivery</p>
-            </div>
-            <div className={`flex-grow h-1 mx-2 ${status === 'Delivered' ? 'bg-primary' : 'bg-muted'}`}></div>
-            <div className="flex flex-col items-center">
-                <div className={`h-12 w-12 rounded-full flex items-center justify-center ${status === 'Delivered' ? 'bg-green-600 text-white' : 'bg-muted'}`}>
-                    <MapPin />
+                <div className={`flex-grow h-1 mx-2 ${isPacked ? 'bg-primary' : 'bg-muted'}`}></div>
+                <div className="flex flex-col items-center">
+                    <div className={`h-12 w-12 rounded-full flex items-center justify-center ${isPacked ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
+                        <Truck />
+                    </div>
+                    <p className="text-sm mt-2">Out for Delivery</p>
                 </div>
-                <p className="text-sm mt-2">Delivered</p>
+                <div className={`flex-grow h-1 mx-2 ${isDelivered ? 'bg-green-600' : 'bg-muted'}`}></div>
+                <div className="flex flex-col items-center">
+                    <div className={`h-12 w-12 rounded-full flex items-center justify-center ${isDelivered ? 'bg-green-600 text-white' : 'bg-muted'}`}>
+                        <MapPin />
+                    </div>
+                    <p className="text-sm mt-2">Delivered</p>
+                </div>
             </div>
-        </div>
-        {status === 'Packed' && (
-             <div className="mt-6">
-                <h5 className="font-semibold mb-2">Live Tracking</h5>
-                 <div className="aspect-video bg-muted rounded-lg overflow-hidden relative">
-                     <Image src="https://placehold.co/600x400.png" alt="Map" fill className="object-cover" data-ai-hint="map view"/>
-                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary">
-                        <Truck className="h-8 w-8 animate-pulse" />
+            {isPacked && !isDelivered && (
+                 <div className="mt-6">
+                    <h5 className="font-semibold mb-2">Live Tracking</h5>
+                     <div className="aspect-video bg-muted rounded-lg overflow-hidden relative">
+                         <Image src="https://placehold.co/600x400.png" alt="Map" fill className="object-cover" data-ai-hint="map view"/>
+                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary">
+                            <Truck className="h-8 w-8 animate-pulse" />
+                         </div>
                      </div>
-                 </div>
-            </div>
-        )}
-    </div>
-);
+                </div>
+            )}
+        </div>
+    );
+}
 
 
 export default function HistoryPage() {
@@ -66,7 +83,7 @@ export default function HistoryPage() {
                             <p className="text-sm text-muted-foreground">{new Date(order.date).toLocaleDateString()}</p>
                         </div>
                         <Badge variant={order.status === 'Delivered' ? 'default' : order.status === 'Cancelled' ? 'destructive' : 'secondary'}
-                            className={`${order.status === 'Delivered' ? 'bg-green-600/80 text-white' : ''} ${order.status === 'Packed' ? 'bg-blue-500 text-white' : ''}`}
+                            className={`${order.status === 'Delivered' ? 'bg-green-600/80 text-white' : ''} ${order.status === 'Packed' ? 'bg-blue-500/80 text-white' : ''} ${order.status === 'Processing' ? 'bg-yellow-500/80 text-white' : ''}`}
                         >
                             {order.status}
                         </Badge>
