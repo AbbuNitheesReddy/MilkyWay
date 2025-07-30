@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -27,19 +28,19 @@ function Navbar() {
       </Link>
       <div className="hidden md:flex items-center gap-4">
         {mainNavItems.map((item) => (
-          <Button key={item.name} asChild variant="ghost" className="font-semibold text-muted-foreground">
+          <Button key={item.name} asChild variant="ghost" className="font-semibold text-muted-foreground hover:-translate-y-px">
             <Link href={item.href}>{item.name}</Link>
           </Button>
         ))}
       </div>
       <div className="flex items-center gap-2">
-         <Button asChild variant="ghost" size="icon">
+         <Button asChild variant="ghost" size="icon" className="hover:-translate-y-px">
            <Link href="/login">
             <User className="h-5 w-5" />
             <span className="sr-only">Login</span>
            </Link>
         </Button>
-        <Button asChild variant="ghost" size="icon">
+        <Button asChild variant="ghost" size="icon" className="hover:-translate-y-px">
           <Link href="/cart">
             <ShoppingCart className="h-5 w-5" />
             <span className="sr-only">Cart</span>
@@ -53,37 +54,41 @@ function Navbar() {
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isScrollingUp, setIsScrollingUp] = useState(true);
-  const [lastYPos, setLastYPos] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentYPos = window.scrollY;
-      setIsScrolled(currentYPos > 50);
-      setIsScrollingUp(currentYPos < lastYPos || currentYPos <= 0);
-      setLastYPos(currentYPos);
-    };
+    const header = document.getElementById('main-header');
+    if (!header) return;
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastYPos]);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsScrolled(!entry.isIntersecting);
+      },
+      { rootMargin: "0px", threshold: 0 }
+    );
+
+    observer.observe(header);
+
+    return () => {
+      observer.unobserve(header);
+    };
+  }, []);
 
 
   return (
     <>
-      <header className="bg-card border-b">
+      <header id="main-header" className="bg-card border-b">
         <div className="container mx-auto px-4">
           {/* Top bar */}
           <div className="flex items-center justify-between h-14 border-b">
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="hover:-translate-y-px">
               <Search className="h-5 w-5" />
               <span className="sr-only">Search</span>
             </Button>
             <div className="flex items-center gap-2">
-               <Button asChild variant="ghost" className="text-sm font-semibold">
+               <Button asChild variant="ghost" className="text-sm font-semibold hover:-translate-y-px">
                     <Link href="/login">Login</Link>
                </Button>
-                <Button asChild variant="ghost" size="icon">
+                <Button asChild variant="ghost" size="icon" className="hover:-translate-y-px">
                     <Link href="/cart"><ShoppingCart className="h-5 w-5" /></Link>
                 </Button>
             </div>
@@ -96,7 +101,7 @@ export function Header() {
             </Link>
             <nav className="hidden md:flex items-center gap-4 mt-6">
               {mainNavItems.map((item) => (
-                <Button key={item.name} asChild variant="ghost" className="font-semibold text-muted-foreground">
+                <Button key={item.name} asChild variant="ghost" className="font-semibold text-muted-foreground hover:-translate-y-px">
                   <Link href={item.href}>{item.name}</Link>
                 </Button>
               ))}
@@ -108,7 +113,7 @@ export function Header() {
       {/* Sticky Navbar */}
       <div className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-transform duration-300",
-        isScrolled && isScrollingUp ? "translate-y-0" : "-translate-y-full"
+        isScrolled ? "translate-y-0" : "-translate-y-full"
       )}>
         <div className="container mx-auto px-4">
             <div className="bg-background/95 backdrop-blur-sm rounded-xl shadow-lg my-2 px-4">
@@ -120,7 +125,7 @@ export function Header() {
        <div className="md:hidden fixed bottom-4 right-4 z-50">
           <Sheet>
               <SheetTrigger asChild>
-                  <Button variant="default" size="icon" className="rounded-full h-14 w-14 shadow-lg">
+                  <Button variant="default" size="icon" className="rounded-full h-14 w-14 shadow-lg hover:-translate-y-px">
                       <Menu className="h-6 w-6" />
                       <span className="sr-only">Open menu</span>
                   </Button>
@@ -131,7 +136,7 @@ export function Header() {
                           <MilkyWayLogo />
                       </Link>
                       {mainNavItems.map((item) => (
-                      <Button key={item.name} asChild variant="ghost" className="justify-center text-lg py-6">
+                      <Button key={item.name} asChild variant="ghost" className="justify-center text-lg py-6 hover:-translate-y-px">
                           <Link href={item.href}>{item.name}</Link>
                       </Button>
                       ))}
