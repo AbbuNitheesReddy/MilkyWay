@@ -63,7 +63,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-16">
+        <section className="py-16 bg-card">
           <div className="container mx-auto px-4 text-center max-w-4xl">
             <h2 className="text-xl md:text-2xl font-bold tracking-wider mb-6">
               WE DELIVER FRESH AND PURE A2 MILK PRODUCED BY OUR INDIGENOUS-BREED COWS WITHIN 3 HOURS OF MILKING, TO GURGAON & SOUTH DELHI.
@@ -92,7 +92,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-16">
+        <section className="py-16 bg-card">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="font-headline text-3xl md:text-4xl font-bold">Our Bestsellers</h2>
@@ -106,7 +106,7 @@ export default function Home() {
               ))}
             </div>
             <div className="text-center mt-12">
-              <Button asChild size="lg" variant="outline">
+              <Button asChild size="lg">
                 <Link href="/products">
                   View All Products <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -144,7 +144,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-16">
+        <section className="py-16 bg-card">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <h2 className="font-headline text-3xl md:text-4xl font-bold">How It Works</h2>
@@ -152,7 +152,7 @@ export default function Home() {
                 </div>
                 <div className="grid md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
                     {howItWorks.map((step, index) => (
-                        <div key={index} className="p-6 bg-card rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div key={index} className="p-6 bg-background rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                             <div className="flex items-center justify-center bg-primary/10 rounded-full w-20 h-20 mx-auto mb-6">
                                 {step.icon}
                             </div>
@@ -171,7 +171,7 @@ export default function Home() {
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {testimonials.map((testimonial) => (
-                <div key={testimonial.name} className="bg-background p-8 rounded-lg shadow-md flex flex-col items-center text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div key={testimonial.name} className="bg-card p-8 rounded-lg shadow-md flex flex-col items-center text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                   <Quote className="h-8 w-8 text-primary mb-4" />
                   <p className="text-muted-foreground italic mb-6 flex-grow">"{testimonial.quote}"</p>
                   <div className="flex items-center mb-2">
@@ -184,7 +184,7 @@ export default function Home() {
           </div>
         </section>
         
-        <section className="py-16">
+        <section className="py-16 bg-card">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-16 items-start">
               <div>
@@ -217,7 +217,7 @@ export default function Home() {
                     <Label htmlFor="message">Message (required)</Label>
                     <Textarea id="message" required />
                   </div>
-                  <Button type="submit" variant="outline">Submit</Button>
+                  <Button type="submit">Submit</Button>
                 </form>
               </div>
               <div>
