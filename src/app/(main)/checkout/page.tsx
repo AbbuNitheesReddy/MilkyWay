@@ -1,4 +1,6 @@
 
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -6,9 +8,30 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
+import { useCartStore } from "@/lib/store";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+
 
 export default function CheckoutPage() {
+    const { items } = useCartStore();
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+    
+    const subtotal = items.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
+    const deliveryFee = 5.00; // Example fee
+    const tax = subtotal * 0.08;
+    const total = subtotal + tax + deliveryFee;
+
+
+    if (!isClient) {
+      return null;
+    }
+
+
   return (
     <div className="container mx-auto px-4 py-8 bg-transparent">
       <h1 className="font-headline text-4xl md:text-5xl font-bold text-center mb-8">Checkout</h1>
@@ -67,7 +90,7 @@ export default function CheckoutPage() {
                   <RadioGroupItem value="express" id="express" className="peer sr-only" />
                   <Label htmlFor="express" className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">
                     Express (Tomorrow)
-                    <span className="font-bold mt-1">$5.00</span>
+                    <span className="font-bold mt-1">${deliveryFee.toFixed(2)}</span>
                   </Label>
                 </div>
               </RadioGroup>
@@ -101,14 +124,19 @@ export default function CheckoutPage() {
               <CardTitle className="font-headline text-2xl">Order Summary</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="flex justify-between"><span>Whole Milk x 1</span><span>$3.50</span></div>
-              <div className="flex justify-between"><span>Greek Yogurt x 2</span><span>$9.98</span></div>
+                {items.map(item => (
+                    <div key={item.product.id} className="flex justify-between">
+                        <span>{item.product.name} x {item.quantity}</span>
+                        <span>${(item.product.price * item.quantity).toFixed(2)}</span>
+                    </div>
+                ))}
+
               <Separator />
-              <div className="flex justify-between"><span>Subtotal</span><span>$13.48</span></div>
-              <div className="flex justify-between"><span>Delivery</span><span>$0.00</span></div>
-              <div className="flex justify-between text-muted-foreground"><span>Taxes</span><span>$1.08</span></div>
+              <div className="flex justify-between"><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
+              <div className="flex justify-between"><span>Delivery</span><span>${deliveryFee.toFixed(2)}</span></div>
+              <div className="flex justify-between text-muted-foreground"><span>Taxes</span><span>${tax.toFixed(2)}</span></div>
               <Separator />
-              <div className="flex justify-between font-bold text-lg"><span>Total</span><span>$14.56</span></div>
+              <div className="flex justify-between font-bold text-lg"><span>Total</span><span>${total.toFixed(2)}</span></div>
             </CardContent>
             <CardFooter>
               <Button asChild className="w-full" size="lg"><Link href="/history">Place Order</Link></Button>

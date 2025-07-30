@@ -8,6 +8,7 @@ import { ShoppingCart, Menu, Search, User } from "lucide-react";
 import { MilkyWayLogo } from "./milky-way-logo";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { useCartStore } from "@/lib/store";
 
 const mainNavItems = [
     { name: "Home", href: "/" },
@@ -16,6 +17,30 @@ const mainNavItems = [
     { name: "Contact", href: "#" },
     { name: "My Orders", href: "/history" },
 ];
+
+function CartButton() {
+    const items = useCartStore((state) => state.items);
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+    
+    return (
+        <Button asChild variant="ghost" size="icon" className="relative hover:-translate-y-px">
+          <Link href="/cart">
+            <ShoppingCart className="h-5 w-5" />
+            {isClient && items.length > 0 && (
+                <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
+                    {items.reduce((acc, item) => acc + item.quantity, 0)}
+                </span>
+            )}
+            <span className="sr-only">Cart</span>
+          </Link>
+        </Button>
+    )
+}
+
 
 function Navbar() {
   return (
@@ -39,12 +64,7 @@ function Navbar() {
             <span className="sr-only">Login</span>
            </Link>
         </Button>
-        <Button asChild variant="ghost" size="icon" className="hover:-translate-y-px">
-          <Link href="/cart">
-            <ShoppingCart className="h-5 w-5" />
-            <span className="sr-only">Cart</span>
-          </Link>
-        </Button>
+        <CartButton />
       </div>
     </nav>
   );
@@ -83,9 +103,7 @@ export function Header() {
                <Button asChild variant="ghost" className="text-sm font-semibold hover:-translate-y-px">
                     <Link href="/login">Login</Link>
                </Button>
-                <Button asChild variant="ghost" size="icon" className="hover:-translate-y-px">
-                    <Link href="/cart"><ShoppingCart className="h-5 w-5" /></Link>
-                </Button>
+                <CartButton />
             </div>
           </div>
           

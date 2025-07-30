@@ -7,11 +7,14 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import type { Product } from "@/lib/data";
 import { ShoppingCart } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useCartStore } from "@/lib/store";
 
 export function ProductCard({ product }: { product: Product }) {
   const { toast } = useToast();
+  const addToCart = useCartStore((state) => state.addToCart);
 
   const handleAddToCart = () => {
+    addToCart(product);
     toast({
       title: "Added to Cart",
       description: `${product.name} has been added to your cart.`,
