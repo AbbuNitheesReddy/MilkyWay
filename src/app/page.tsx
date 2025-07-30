@@ -31,7 +31,7 @@ export default function Home() {
             data-ai-hint="happy cows field"
           />
           <div className="relative z-10 container mx-auto px-4">
-            <div className="bg-black/40 p-8 rounded-lg max-w-2xl mx-auto">
+            <div className="p-8 rounded-lg max-w-2xl mx-auto">
                 <p className="font-body text-2xl md:text-3xl text-gray-200 tracking-wider mb-2 text-shadow">We believe</p>
                 <h1 className="font-headline text-5xl md:text-7xl font-bold text-white tracking-wide uppercase text-shadow-lg">
                     Happy Cows give Healthy Milk!
