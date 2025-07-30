@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, User, Menu } from "lucide-react";
+import { ShoppingCart, Menu } from "lucide-react";
 import { MilkyWayLogo } from "./milky-way-logo";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
@@ -11,6 +11,7 @@ export function Header() {
     { name: "All Products", href: "/products" },
     { name: "About Us", href: "#" },
     { name: "Contact", href: "#" },
+    { name: "My Orders", href: "/history" },
   ];
 
   return (
@@ -27,15 +28,12 @@ export function Header() {
                 <Link href={item.href}>{item.name}</Link>
               </Button>
             ))}
+            <Button asChild variant="ghost" className="text-foreground/80 font-semibold">
+              <Link href="/login">Login</Link>
+            </Button>
           </nav>
 
           <div className="flex items-center gap-2">
-            <Button asChild variant="ghost" className="hidden md:inline-flex">
-              <Link href="/login">Login</Link>
-            </Button>
-            <Button asChild>
-              <Link href="/products">Shop Now</Link>
-            </Button>
             <Button asChild variant="outline" size="icon">
               <Link href="/cart">
                 <ShoppingCart className="h-5 w-5" />
@@ -59,8 +57,8 @@ export function Header() {
                             <Link href={item.href}>{item.name}</Link>
                         </Button>
                         ))}
-                         <Button asChild variant="outline" className="justify-start text-lg">
-                            <Link href="/profile">My Account</Link>
+                         <Button asChild variant="ghost" className="justify-start text-lg">
+                            <Link href="/login">Login</Link>
                         </Button>
                     </div>
                 </SheetContent>
