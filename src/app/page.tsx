@@ -3,12 +3,11 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ChevronRight, ShoppingBasket, Truck, Leaf, Star, Quote } from 'lucide-react';
+import { ArrowRight, ChevronRight, ShoppingBasket, Truck, Leaf, Star, Quote, Facebook, Instagram, Twitter } from 'lucide-react';
 import { products } from '@/lib/data';
 import { ProductCard } from './(main)/_components/product-card';
 import { Header } from './(main)/_components/header';
 import { Footer } from './(main)/_components/footer';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
@@ -52,14 +51,25 @@ export default function Home() {
           />
           <div className="relative z-10 container mx-auto px-4">
             <div className="bg-black/40 p-8 rounded-lg max-w-2xl mx-auto">
-                <p className="font-body text-2xl md:text-3xl text-gray-200 tracking-wider mb-2">We believe</p>
-                <h1 className="font-headline text-5xl md:text-7xl font-bold text-white tracking-wide uppercase">
+                <p className="font-body text-2xl md:text-3xl text-gray-200 tracking-wider mb-2 text-shadow">We believe</p>
+                <h1 className="font-headline text-5xl md:text-7xl font-bold text-white tracking-wide uppercase text-shadow-lg">
                     Happy Cows give Healthy Milk!
                 </h1>
                 <Button asChild size="lg" className="mt-8">
                     <Link href="/products">Shop Now <ArrowRight className="ml-2"/></Link>
                 </Button>
             </div>
+          </div>
+        </section>
+
+        <section className="py-12 md:py-20 bg-background">
+          <div className="container mx-auto px-4 text-center max-w-4xl">
+            <h2 className="text-xl md:text-2xl font-bold tracking-wider mb-6">
+              WE DELIVER FRESH AND PURE A2 MILK PRODUCED BY OUR INDIGENOUS-BREED COWS WITHIN 3 HOURS OF MILKING, TO GURGAON & SOUTH DELHI.
+            </h2>
+            <p className="text-muted-foreground text-base md:text-lg">
+              MilkyWay Dairyworks was started by a passionate farmer, who left his corporate job to follow his calling of going back to the land to produce pure food using sustainable farming practices. Our farm is located in the Aravalis, near Golf Course Road, Gurgaon. MilkyWay milk is produced at our own farm and not aggregated from different farms. Our cows are not given any hormones, antibiotics or drugs. They are fed pesticide free green fodder grown at our own farm, not separated from their calves and encouraged to roam free.
+            </p>
           </div>
         </section>
 
@@ -70,7 +80,7 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
               {categories.map((category) => (
-                <Link key={category.name} href={category.href} className="group text-center p-4 rounded-lg transition-all duration-300 hover:bg-primary/5 hover:shadow-lg">
+                <Link key={category.name} href={category.href} className="group text-center p-4 rounded-lg transition-all duration-300 hover:bg-primary/5 hover:shadow-lg hover:-translate-y-1">
                     <div className="flex items-center justify-center bg-gray-100 rounded-full w-24 h-24 mx-auto mb-4 transition-all duration-300 group-hover:bg-primary/10">
                        {React.cloneElement(category.icon, { className: 'h-10 w-10 text-primary transition-colors duration-300' })}
                     </div>
@@ -141,7 +151,7 @@ export default function Home() {
                 </div>
                 <div className="grid md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
                     {howItWorks.map((step, index) => (
-                        <div key={index} className="p-6 bg-card rounded-lg shadow-sm">
+                        <div key={index} className="p-6 bg-card rounded-lg shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                             <div className="flex items-center justify-center bg-primary/10 rounded-full w-20 h-20 mx-auto mb-6">
                                 {step.icon}
                             </div>
@@ -160,7 +170,7 @@ export default function Home() {
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {testimonials.map((testimonial) => (
-                <div key={testimonial.name} className="bg-background p-8 rounded-lg shadow-md flex flex-col items-center text-center">
+                <div key={testimonial.name} className="bg-background p-8 rounded-lg shadow-md flex flex-col items-center text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <Quote className="h-8 w-8 text-primary mb-4" />
                   <p className="text-muted-foreground italic mb-6 flex-grow">"{testimonial.quote}"</p>
                   <div className="flex items-center mb-2">
