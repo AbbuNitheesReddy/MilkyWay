@@ -172,7 +172,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-
+        
         <section className="py-12 md:py-20 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-16 items-start">
@@ -228,34 +228,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-        
-        <section className="py-12 md:py-20 bg-card">
-          <div className="container mx-auto px-4 max-w-3xl">
-            <div className="text-center mb-12">
-              <h2 className="font-headline text-3xl md:text-4xl font-bold">Frequently Asked Questions</h2>
-            </div>
-             <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="item-1">
-                    <AccordionTrigger>What is A2 milk?</AccordionTrigger>
-                    <AccordionContent>
-                    A2 milk is a variety of cow's milk that mostly lacks a form of β-casein proteins called A1, and instead has the A2 form. Our milk comes from Gir cows, which naturally produce A2 milk, known for being easier to digest for many people.
-                    </AccordionContent>
-                </AccordionItem>
-                 <AccordionItem value="item-2">
-                    <AccordionTrigger>Is your milk organic?</AccordionTrigger>
-                    <AccordionContent>
-                    Yes, our cows are fed organic fodder and graze in pastures free from chemical fertilizers and pesticides. We are committed to natural and sustainable farming practices to bring you the purest products.
-                    </AccordionContent>
-                </AccordionItem>
-                 <AccordionItem value="item-3">
-                    <AccordionTrigger>How do subscriptions work?</AccordionTrigger>
-                    <AccordionContent>
-                    You can subscribe to our products for regular delivery. Simply choose your products, set a delivery frequency (daily, alternate days, etc.), and we'll handle the rest. You can easily pause, modify, or cancel your subscription from your account.
-                    </AccordionContent>
-                </AccordionItem>
-             </Accordion>
           </div>
         </section>
       </main>
