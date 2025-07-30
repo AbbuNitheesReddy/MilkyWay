@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { products } from "@/lib/data.tsx";
+import { products } from "@/lib/data";
 import { ProductCard } from "../_components/product-card";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
