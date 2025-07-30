@@ -39,7 +39,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-background p-4">
+    <div className="flex items-center justify-center min-h-screen bg-card p-4">
       <div className="w-full max-w-md">
         <div className="flex justify-center mb-8">
             <Link href="/">

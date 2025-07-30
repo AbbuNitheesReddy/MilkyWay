@@ -21,7 +21,7 @@ export default function Home() {
     <>
       <Header />
       
-        <section className="relative h-[60vh] md:h-[80vh] flex items-center justify-center text-center text-white bg-blue-100">
+        <section className="relative h-[60vh] md:h-[80vh] flex items-center justify-center text-center text-white">
           <Image
             src="https://storage.googleapis.com/aai-web-samples/milky-way-hero.png"
             alt="Happy cows in a lush green field under a clear blue sky"
@@ -30,6 +30,7 @@ export default function Home() {
             priority
             data-ai-hint="happy cows field"
           />
+          <div className="absolute inset-0 bg-black/30 z-0"></div>
           <div className="relative z-10 container mx-auto px-4">
             <div className="p-8 rounded-lg max-w-2xl mx-auto">
                 <p className="font-body text-2xl md:text-3xl text-gray-200 tracking-wider mb-2 text-shadow">We believe</p>

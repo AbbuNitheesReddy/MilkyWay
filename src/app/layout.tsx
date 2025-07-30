@@ -28,9 +28,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        <div className="border-t-4 border-cyan-400">
-          {children}
-        </div>
+        {children}
         <Toaster />
       </body>
     </html>
