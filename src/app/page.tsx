@@ -40,7 +40,7 @@ export default function Home() {
       <main className="flex-grow bg-background">
         <section className="relative h-[60vh] md:h-[80vh] flex items-center justify-center text-center text-white bg-blue-100">
           <Image
-            src="https://placehold.co/1600x900.png"
+            src="https://storage.googleapis.com/aai-web-samples/milky-way-hero.png"
             alt="Happy cows in a lush green field under a clear blue sky"
             fill
             className="object-cover z-0"
