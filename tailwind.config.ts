@@ -17,7 +17,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['var(--font-poppins)', 'sans-serif'],
+        body: ['var(--font-montserrat)', 'sans-serif'],
         headline: ['"Playfair Display"', 'serif'],
         code: ['monospace'],
       },

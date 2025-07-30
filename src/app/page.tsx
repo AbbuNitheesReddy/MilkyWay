@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ChevronRight, Milk, MoreHorizontal, ShoppingCart, Star } from 'lucide-react';
+import { ArrowRight, MoreHorizontal } from 'lucide-react';
 import { products } from '@/lib/data';
 import { ProductCard } from './(main)/_components/product-card';
 import { Header } from './(main)/_components/header';
@@ -11,7 +11,7 @@ import { Footer } from './(main)/_components/footer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const categories = [
-  { name: 'Milk', icon: <Milk />, href: '/products' },
+  { name: 'Milk', icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8 text-primary"><path d="M12 2c-3 0-5.2 2.4-5.2 5.2 0 2.2 1 4 2.2 5.5.5.6.8 1.2.8 1.8v5.5c0 .6.4 1 1 1h2c.6 0 1-.4 1-1V14.5c0-.6.3-1.2.8-1.8 1.2-1.5 2.2-3.3 2.2-5.5C17.2 4.4 15 2 12 2z"/><path d="M12 2v2.5"/></svg>, href: '/products' },
   { name: 'Ghee', icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8 text-primary"><path d="M20.2 7.8 12 16l-8.2-8.2a2.4 2.4 0 0 1 3.4-3.4L12 9l4.8-4.8a2.4 2.4 0 0 1 3.4 3.4Z"/><path d="M7.8 20.2 16 12l-8.2-8.2"/></svg>, href: '/products' },
   { name: 'Paneer', icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8 text-primary"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 8h10"/><path d="M7 12h10"/><path d="M7 16h10"/></svg>, href: '/products' },
   { name: 'Curd', icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8 text-primary"><path d="M8 11h.01"/><path d="M12 11h.01"/><path d="M16 11h.01"/><path d="M21 14c0 2.2-1.8 4-4 4H7c-2.2 0-4-1.8-4-4v- organizações"/><path d="M21 9a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2c0 .8.2 1.5.5 2.1"/></svg>, href: '/products' },
@@ -38,27 +38,24 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow bg-background">
-        <section className="relative h-[70vh] md:h-[80vh] flex items-center justify-center text-center text-white bg-black">
+        <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center text-white bg-blue-100">
           <Image
-            src="https://placehold.co/1920x1080.png"
-            alt="A beautiful dairy farm at sunrise"
+            src="https://placehold.co/1600x900.png"
+            alt="Various dairy products on a light blue textured background"
             fill
-            className="object-cover z-0 opacity-40"
-            data-ai-hint="dairy farm sunrise"
+            className="object-cover z-0"
+            data-ai-hint="dairy products"
           />
           <div className="relative z-10 container mx-auto px-4">
-            <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 text-shadow-lg">
-              Farm-Fresh Goodness, Delivered Daily.
-            </h1>
-            <p className="font-body text-lg md:text-xl max-w-2xl mx-auto text-shadow">
-              Pure, unadulterated A2 milk and dairy products from our happy cows to your home.
-            </p>
-            <div className="mt-8">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold">
-                <Link href="/products">
-                  Shop Now <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
+            <div className="text-left max-w-lg">
+                <p className="font-body text-2xl md:text-3xl text-gray-700 tracking-wider">we believe</p>
+                <h1 className="font-headline text-5xl md:text-7xl font-bold text-gray-800 my-2 tracking-wide">
+                HAPPY COWS
+                </h1>
+                <p className="font-body text-2xl md:text-3xl text-gray-700 tracking-wider">give</p>
+                <h1 className="font-headline text-5xl md:text-7xl font-bold text-gray-800 mt-2 tracking-wide">
+                HEALTHY MILK!
+                </h1>
             </div>
           </div>
         </section>
@@ -71,8 +68,8 @@ export default function Home() {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
               {categories.map((category) => (
                 <Link key={category.name} href={category.href} className="group text-center">
-                    <div className="flex items-center justify-center bg-background rounded-lg w-24 h-24 mx-auto mb-4 transition-all duration-300 group-hover:bg-primary group-hover:shadow-lg">
-                       {React.cloneElement(category.icon, { className: 'h-10 w-10 text-primary transition-colors duration-300 group-hover:text-primary-foreground' })}
+                    <div className="flex items-center justify-center bg-gray-100 rounded-lg w-24 h-24 mx-auto mb-4 transition-all duration-300 group-hover:bg-primary/10 group-hover:shadow-lg">
+                       {React.cloneElement(category.icon, { className: 'h-10 w-10 text-primary transition-colors duration-300' })}
                     </div>
                     <h3 className="font-bold text-lg">{category.name}</h3>
                 </Link>
@@ -159,7 +156,7 @@ export default function Home() {
               {testimonials.map((testimonial) => (
                 <div key={testimonial.name} className="bg-background p-6 rounded-lg shadow-md">
                   <div className="flex items-center mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />)}
+                    {[...Array(testimonial.rating)].map((_, i) => <svg key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>)}
                   </div>
                   <p className="text-muted-foreground italic mb-4">"{testimonial.quote}"</p>
                   <p className="font-bold text-right">- {testimonial.name}</p>
