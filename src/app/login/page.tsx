@@ -1,4 +1,6 @@
 
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,6 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { MilkyWayLogo } from "@/app/(main)/_components/milky-way-logo";
 import { Separator } from "@/components/ui/separator";
+import { useAuthStore } from "@/lib/store";
+import { useRouter } from "next/navigation";
 
 const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" {...props}>
@@ -25,6 +29,15 @@ const FacebookIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 
 export default function LoginPage() {
+  const { login } = useAuthStore();
+  const router = useRouter();
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    login();
+    router.push('/');
+  }
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-background p-4">
       <div className="w-full max-w-md">
@@ -39,7 +52,7 @@ export default function LoginPage() {
             <CardDescription>Enter your credentials to access your account.</CardDescription>
           </CardHeader>
           <CardContent>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleLogin}>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input id="email" type="email" placeholder="you@example.com" required />
@@ -53,8 +66,8 @@ export default function LoginPage() {
                 </div>
                 <Input id="password" type="password" required />
               </div>
-              <Button type="submit" className="w-full" asChild>
-                <Link href="/">Sign In</Link>
+              <Button type="submit" className="w-full">
+                Sign In
               </Button>
             </form>
             <div className="relative my-6">
@@ -64,10 +77,10 @@ export default function LoginPage() {
                 </div>
             </div>
             <div className="flex gap-4">
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full" onClick={handleLogin}>
                     <GoogleIcon className="mr-2 h-5 w-5"/> Google
                 </Button>
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full" onClick={handleLogin}>
                     <FacebookIcon className="mr-2 h-5 w-5"/> Facebook
                 </Button>
             </div>

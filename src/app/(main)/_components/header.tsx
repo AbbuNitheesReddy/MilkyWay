@@ -4,18 +4,19 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Menu, Search, User } from "lucide-react";
+import { ShoppingCart, Menu, User, LogOut } from "lucide-react";
 import { MilkyWayLogo } from "./milky-way-logo";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { useCartStore } from "@/lib/store";
+import { useCartStore, useAuthStore } from "@/lib/store";
+import { useRouter } from "next/navigation";
+
 
 const mainNavItems = [
     { name: "Home", href: "/" },
     { name: "All Products", href: "/products" },
     { name: "About Us", href: "#" },
     { name: "Contact", href: "#" },
-    { name: "My Orders", href: "/history" },
 ];
 
 function CartButton() {
@@ -42,7 +43,16 @@ function CartButton() {
 }
 
 
-function Navbar() {
+function Navbar({isLoggedIn, logout}: {isLoggedIn: boolean, logout: () => void}) {
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logout();
+    router.push('/');
+  }
+
+  const navItems = isLoggedIn ? [...mainNavItems, { name: "My Orders", href: "/history" }] : mainNavItems;
+
   return (
     <nav className="flex items-center justify-between h-16">
       <Link href="/" className="flex items-center gap-2">
@@ -51,19 +61,34 @@ function Navbar() {
         </span>
       </Link>
       <div className="hidden md:flex items-center gap-4">
-        {mainNavItems.map((item) => (
+        {navItems.map((item) => (
           <Button key={item.name} asChild variant="ghost" className="font-semibold text-muted-foreground hover:-translate-y-px">
             <Link href={item.href}>{item.name}</Link>
           </Button>
         ))}
       </div>
       <div className="flex items-center gap-2">
-         <Button asChild variant="ghost" size="icon" className="hover:-translate-y-px">
-           <Link href="/login">
-            <User className="h-5 w-5" />
-            <span className="sr-only">Login</span>
-           </Link>
-        </Button>
+        {isLoggedIn ? (
+          <>
+            <Button asChild variant="ghost" size="icon" className="hover:-translate-y-px">
+              <Link href="/profile">
+                <User className="h-5 w-5" />
+                <span className="sr-only">Profile</span>
+              </Link>
+            </Button>
+            <Button variant="ghost" size="icon" className="hover:-translate-y-px" onClick={handleLogout}>
+              <LogOut className="h-5 w-5" />
+              <span className="sr-only">Logout</span>
+            </Button>
+          </>
+        ) : (
+          <Button asChild variant="ghost" size="icon" className="hover:-translate-y-px">
+            <Link href="/login">
+              <User className="h-5 w-5" />
+              <span className="sr-only">Login</span>
+            </Link>
+          </Button>
+        )}
         <CartButton />
       </div>
     </nav>
@@ -73,6 +98,13 @@ function Navbar() {
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { isLoggedIn, logout } = useAuthStore();
+  const [isClient, setIsClient] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+      setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,6 +120,12 @@ export function Header() {
     };
   }, []);
 
+  const handleLogout = () => {
+    logout();
+    router.push('/');
+  }
+  
+  const navItems = isLoggedIn && isClient ? [...mainNavItems, { name: "My Orders", href: "/history" }] : mainNavItems;
 
   return (
     <>
@@ -95,14 +133,20 @@ export function Header() {
         <div className="container mx-auto px-4">
           {/* Top bar */}
           <div className="flex items-center justify-between h-14 border-b">
-            <Button variant="ghost" size="icon" className="hover:-translate-y-px">
-              <Search className="h-5 w-5" />
-              <span className="sr-only">Search</span>
-            </Button>
-            <div className="flex items-center gap-2">
-               <Button asChild variant="ghost" className="text-sm font-semibold hover:-translate-y-px">
-                    <Link href="/login">Login</Link>
-               </Button>
+             <div className="flex-1"></div>
+            <div className="flex items-center gap-2 flex-1 justify-end">
+               {isClient && isLoggedIn ? (
+                 <>
+                   <Button asChild variant="ghost" className="text-sm font-semibold hover:-translate-y-px">
+                       <Link href="/profile">My Profile</Link>
+                   </Button>
+                   <Button variant="ghost" className="text-sm font-semibold hover:-translate-y-px" onClick={handleLogout}>Logout</Button>
+                 </>
+               ) : (
+                 <Button asChild variant="ghost" className="text-sm font-semibold hover:-translate-y-px">
+                       <Link href="/login">Login</Link>
+                 </Button>
+               )}
                 <CartButton />
             </div>
           </div>
@@ -113,7 +157,7 @@ export function Header() {
               <MilkyWayLogo />
             </Link>
             <nav className="hidden md:flex items-center gap-4 mt-6">
-              {mainNavItems.map((item) => (
+              {navItems.map((item) => (
                 <Button key={item.name} asChild variant="ghost" className="font-semibold text-muted-foreground hover:-translate-y-px">
                   <Link href={item.href}>{item.name}</Link>
                 </Button>
@@ -130,7 +174,7 @@ export function Header() {
       )}>
         <div className="container mx-auto px-4">
             <div className="bg-background/95 backdrop-blur-sm rounded-xl shadow-lg my-2 px-4">
-                <Navbar />
+                {isClient && <Navbar isLoggedIn={isLoggedIn} logout={logout} />}
             </div>
         </div>
       </div>
@@ -148,7 +192,7 @@ export function Header() {
                         <Link href="/" className="flex flex-col items-center gap-2 mb-4">
                           <MilkyWayLogo />
                       </Link>
-                      {mainNavItems.map((item) => (
+                      {navItems.map((item) => (
                       <Button key={item.name} asChild variant="ghost" className="justify-center text-lg py-6 hover:-translate-y-px">
                           <Link href={item.href}>{item.name}</Link>
                       </Button>

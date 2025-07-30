@@ -8,13 +8,27 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { useCartStore } from "@/lib/store";
+import { useAuthStore, useCartStore } from "@/lib/store";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { User } from "lucide-react";
 
+function AuthWall() {
+    return (
+        <Card className="text-center p-12">
+            <User className="h-20 w-20 mx-auto text-muted-foreground mb-4" />
+            <h2 className="font-headline text-2xl mb-2">Please Log In</h2>
+            <p className="text-muted-foreground mb-6">You need to be logged in to proceed to checkout.</p>
+            <Button asChild>
+                <Link href="/login">Login</Link>
+            </Button>
+        </Card>
+    )
+}
 
 export default function CheckoutPage() {
     const { items } = useCartStore();
+    const { isLoggedIn } = useAuthStore();
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
@@ -31,13 +45,21 @@ export default function CheckoutPage() {
       return null;
     }
 
+    if (!isLoggedIn) {
+      return (
+         <div className="container mx-auto px-4 py-8 bg-transparent">
+             <AuthWall />
+         </div>
+      )
+    }
+
 
   return (
     <div className="container mx-auto px-4 py-8 bg-transparent">
       <h1 className="font-headline text-4xl md:text-5xl font-bold text-center mb-8">Checkout</h1>
       <div className="grid md:grid-cols-3 gap-8">
         <form className="md:col-span-2 space-y-8">
-          <Card className="bg-white">
+          <Card>
             <CardHeader>
               <CardTitle className="font-headline text-2xl">Delivery Address</CardTitle>
             </CardHeader>
@@ -73,7 +95,7 @@ export default function CheckoutPage() {
               </div>
             </CardContent>
           </Card>
-           <Card className="bg-white">
+           <Card>
             <CardHeader>
               <CardTitle className="font-headline text-2xl">Delivery Time</CardTitle>
             </CardHeader>
@@ -96,7 +118,7 @@ export default function CheckoutPage() {
               </RadioGroup>
             </CardContent>
           </Card>
-           <Card className="bg-white">
+           <Card>
             <CardHeader>
               <CardTitle className="font-headline text-2xl">Payment</CardTitle>
             </CardHeader>
@@ -119,7 +141,7 @@ export default function CheckoutPage() {
           </Card>
         </form>
         <div className="md:col-span-1">
-          <Card className="sticky top-24 bg-white">
+          <Card className="sticky top-24">
             <CardHeader>
               <CardTitle className="font-headline text-2xl">Order Summary</CardTitle>
             </CardHeader>

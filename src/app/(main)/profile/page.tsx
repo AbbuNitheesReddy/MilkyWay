@@ -1,12 +1,50 @@
 
+"use client";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useAuthStore } from "@/lib/store";
 import { User, MapPin, Edit } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
+
+function AuthWall() {
+    return (
+        <Card className="text-center p-12">
+            <User className="h-20 w-20 mx-auto text-muted-foreground mb-4" />
+            <h2 className="font-headline text-2xl mb-2">Please Log In</h2>
+            <p className="text-muted-foreground mb-6">You need to be logged in to view your profile.</p>
+            <Button asChild>
+                <Link href="/login">Login</Link>
+            </Button>
+        </Card>
+    )
+}
 
 export default function ProfilePage() {
+  const { isLoggedIn } = useAuthStore();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null; 
+  }
+
+  if (!isLoggedIn) {
+      return (
+         <div className="container mx-auto px-4 py-8 bg-transparent">
+             <AuthWall />
+         </div>
+      )
+  }
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="font-headline text-4xl md:text-5xl font-bold text-center mb-8">Your Profile</h1>

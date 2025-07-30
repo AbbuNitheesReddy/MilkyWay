@@ -5,14 +5,28 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { useCartStore } from "@/lib/store";
-import { Minus, Plus, Trash2, ShoppingCart } from "lucide-react";
+import { useAuthStore, useCartStore } from "@/lib/store";
+import { Minus, Plus, Trash2, ShoppingCart, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+function AuthWall() {
+    return (
+        <Card className="text-center p-12">
+            <User className="h-20 w-20 mx-auto text-muted-foreground mb-4" />
+            <h2 className="font-headline text-2xl mb-2">Please Log In</h2>
+            <p className="text-muted-foreground mb-6">You need to be logged in to view your cart.</p>
+            <Button asChild>
+                <Link href="/login">Login</Link>
+            </Button>
+        </Card>
+    )
+}
+
 export default function CartPage() {
   const { items, removeFromCart, updateQuantity } = useCartStore();
+  const { isLoggedIn } = useAuthStore();
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -27,12 +41,20 @@ export default function CartPage() {
     return null; 
   }
 
+  if (!isLoggedIn) {
+      return (
+         <div className="container mx-auto px-4 py-8 bg-transparent">
+             <AuthWall />
+         </div>
+      )
+  }
+
   return (
     <div className="container mx-auto px-4 py-8 bg-transparent">
       <h1 className="font-headline text-4xl md:text-5xl font-bold text-center mb-8">Your Cart</h1>
       
       {items.length === 0 ? (
-        <Card className="bg-white text-center p-12">
+        <Card className="text-center p-12">
             <ShoppingCart className="h-20 w-20 mx-auto text-muted-foreground mb-4" />
             <h2 className="font-headline text-2xl mb-2">Your cart is empty</h2>
             <p className="text-muted-foreground mb-6">Looks like you haven't added anything to your cart yet.</p>
@@ -43,7 +65,7 @@ export default function CartPage() {
       ) : (
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-2">
-            <Card className="bg-white">
+            <Card>
               <CardContent className="p-6">
                 <div className="flex flex-col gap-6">
                   {items.map(item => (
@@ -71,7 +93,7 @@ export default function CartPage() {
             </Card>
           </div>
           <div className="md:col-span-1">
-            <Card className="bg-white">
+            <Card>
               <CardHeader>
                 <CardTitle className="font-headline text-2xl">Order Summary</CardTitle>
               </CardHeader>

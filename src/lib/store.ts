@@ -1,6 +1,7 @@
 
 import { create } from 'zustand';
 import type { Product } from './data';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
 export type CartItem = {
   product: Product;
@@ -15,35 +16,63 @@ type CartState = {
   clearCart: () => void;
 };
 
-export const useCartStore = create<CartState>((set) => ({
-  items: [],
-  addToCart: (product) =>
-    set((state) => {
-      const existingItem = state.items.find(
-        (item) => item.product.id === product.id
-      );
-      if (existingItem) {
-        const updatedItems = state.items.map((item) =>
-          item.product.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-        return { items: updatedItems };
-      } else {
-        return { items: [...state.items, { product, quantity: 1 }] };
-      }
+export const useCartStore = create<CartState>()(
+  persist(
+    (set) => ({
+      items: [],
+      addToCart: (product) =>
+        set((state) => {
+          const existingItem = state.items.find(
+            (item) => item.product.id === product.id
+          );
+          if (existingItem) {
+            const updatedItems = state.items.map((item) =>
+              item.product.id === product.id
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
+            );
+            return { items: updatedItems };
+          } else {
+            return { items: [...state.items, { product, quantity: 1 }] };
+          }
+        }),
+      removeFromCart: (productId) =>
+        set((state) => ({
+          items: state.items.filter((item) => item.product.id !== productId),
+        })),
+      updateQuantity: (productId, quantity) =>
+        set((state) => ({
+          items: state.items
+            .map((item) =>
+              item.product.id === productId ? { ...item, quantity } : item
+            )
+            .filter((item) => item.quantity > 0),
+        })),
+      clearCart: () => set({ items: [] }),
     }),
-  removeFromCart: (productId) =>
-    set((state) => ({
-      items: state.items.filter((item) => item.product.id !== productId),
-    })),
-  updateQuantity: (productId, quantity) =>
-    set((state) => ({
-      items: state.items
-        .map((item) =>
-          item.product.id === productId ? { ...item, quantity } : item
-        )
-        .filter((item) => item.quantity > 0),
-    })),
-  clearCart: () => set({ items: [] }),
-}));
+    {
+      name: 'cart-storage',
+      storage: createJSONStorage(() => sessionStorage),
+    }
+  )
+);
+
+type AuthState = {
+    isLoggedIn: boolean;
+    login: () => void;
+    logout: () => void;
+}
+
+export const useAuthStore = create<AuthState>()(
+    persist(
+        (set) => ({
+            isLoggedIn: false,
+            login: () => set({ isLoggedIn: true }),
+            logout: () => set({ isLoggedIn: false, }),
+        }),
+        {
+            name: 'auth-storage',
+            storage: createJSONStorage(() => sessionStorage),
+        }
+    )
+)

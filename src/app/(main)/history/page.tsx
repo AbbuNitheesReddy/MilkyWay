@@ -1,11 +1,30 @@
 
+"use client";
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { orders, products } from "@/lib/data";
-import { Eye, RefreshCw, ChevronDown, Package, Truck, MapPin } from "lucide-react";
+import { Eye, RefreshCw, ChevronDown, Package, Truck, MapPin, User } from "lucide-react";
 import Image from "next/image";
+import { useAuthStore } from "@/lib/store";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+
+
+function AuthWall() {
+    return (
+        <Card className="text-center p-12">
+            <User className="h-20 w-20 mx-auto text-muted-foreground mb-4" />
+            <h2 className="font-headline text-2xl mb-2">Please Log In</h2>
+            <p className="text-muted-foreground mb-6">You need to be logged in to view your order history.</p>
+            <Button asChild>
+                <Link href="/login">Login</Link>
+            </Button>
+        </Card>
+    )
+}
 
 const OrderTracking = ({ status }: { status: 'Delivered' | 'Processing' | 'Cancelled' | 'Packed' }) => {
     
@@ -66,6 +85,24 @@ const OrderTracking = ({ status }: { status: 'Delivered' | 'Processing' | 'Cance
 
 export default function HistoryPage() {
   const getProduct = (id: string) => products.find(p => p.id === id);
+  const { isLoggedIn } = useAuthStore();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null; 
+  }
+
+  if (!isLoggedIn) {
+      return (
+         <div className="container mx-auto px-4 py-8 bg-transparent">
+             <AuthWall />
+         </div>
+      )
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
