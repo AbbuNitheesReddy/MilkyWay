@@ -56,16 +56,20 @@ export default function ContactPage() {
                     </p>
                     <p className="font-bold pt-4">Address:</p>
                     <p>MILKYWAY Dairy Works</p>
-                    <p>Baliawas Village, Near Gwal Pahari</p>
-                    <p>Gurgaon 122002</p>
+                    <p>Jubilee Hills, Hyderabad</p>
+                    <p>Telangana 500033</p>
                 </div>
-                <div className="aspect-video relative rounded-lg overflow-hidden shadow-lg">
-                    <Image
-                        src="/images/map.png"
-                        alt="Map of our farm location"
-                        fill
-                        className="object-cover w-full"
-                        data-ai-hint="map view"
+                <div className="mt-6 rounded-lg shadow-lg overflow-hidden" style={{ height: '400px' }}>
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30452.77953614!2d78.39916562431642!3d17.431179899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb97031531026f%3A0xbf371f589b17fc02!2sJubilee%20Hills%2C%20Hyderabad%2C%20Telangana%20500033!5e0!3m2!1sen!2sin!4v1716034069748!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style={{ border: 0 }} 
+                        allowFullScreen={true} 
+                        loading="lazy" 
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title="MilkyWay Farm Location"
+                        aria-label="Google Maps showing MilkyWay Farm location in Jubilee Hills, Hyderabad"
                     />
                 </div>
             </div>

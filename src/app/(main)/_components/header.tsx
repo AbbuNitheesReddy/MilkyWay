@@ -179,7 +179,7 @@ export function Header() {
         </div>
       </div>
        {/* Mobile Menu Button */}
-       <div className="md:hidden fixed bottom-4 right-4 z-50">
+       <div className="md:hidden">
           <Sheet>
               <SheetTrigger asChild>
                   <Button variant="default" size="icon" className="rounded-full h-14 w-14 shadow-lg hover:-translate-y-px">

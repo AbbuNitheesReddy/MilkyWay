@@ -15,7 +15,7 @@ export default function AboutPage() {
         <div>
           <h2 className="font-headline text-3xl font-bold mb-4">Our Story</h2>
           <p className="text-muted-foreground mb-4">
-            MilkyWay Dairyworks was started by a passionate farmer, who left his corporate job to follow his calling of going back to the land to produce pure food using sustainable farming practices. Our farm is located in the Aravalis, near Golf Course Road, Gurgaon.
+            MilkyWay Dairyworks was started by a passionate farmer, who left his corporate job to follow his calling of going back to the land to produce pure food using sustainable farming practices. Our farm is located in the lush green areas of Jubilee Hills, Hyderabad.
           </p>
           <p className="text-muted-foreground">
             Our mission is simple: to provide our community with dairy products that are not only delicious but also ethically and sustainably produced. We believe in happy cows, healthy land, and nourishing food.
@@ -23,10 +23,12 @@ export default function AboutPage() {
         </div>
         <div className="aspect-video relative rounded-lg overflow-hidden shadow-lg">
           <Image
-            src="/images/farm.png"
+            src="/images/MilkyWay Farm.jpg"
             alt="The MilkyWay farm"
             fill
             className="object-cover"
+            quality={90}
+            sizes="(max-width: 768px) 100vw, 50vw"
             data-ai-hint="farm landscape"
           />
         </div>
@@ -35,10 +37,12 @@ export default function AboutPage() {
        <div className="grid md:grid-cols-2 gap-12 items-center">
          <div className="aspect-video relative rounded-lg overflow-hidden shadow-lg order-2 md:order-1">
           <Image
-            src="/images/cows.png"
+            src="/images/cows.jpg"
             alt="Happy cows grazing"
             fill
             className="object-cover"
+            quality={90}
+            sizes="(max-width: 768px) 100vw, 50vw"
             data-ai-hint="happy cows"
           />
         </div>
@@ -50,6 +54,29 @@ export default function AboutPage() {
           <p className="text-muted-foreground">
            This love and care reflects in the superior quality of our A2 milk. We follow a completely automated, hands-free milking process, ensuring the utmost hygiene. The milk is chilled instantly to preserve its freshness and nutrients, right until it reaches your doorstep.
           </p>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-12 items-center mt-16">
+        <div>
+          <h2 className="font-headline text-3xl font-bold mb-4">Our Products</h2>
+          <p className="text-muted-foreground mb-4">
+            We take pride in our range of premium dairy products, all made with the same care and attention to quality. From fresh A2 milk to artisanal cheese, our products are crafted to bring the authentic taste of farm-fresh dairy to your table.
+          </p>
+          <p className="text-muted-foreground">
+            Every product we offer is made with milk from our own herd, ensuring complete traceability and consistent quality. We use traditional methods combined with modern technology to create dairy products that are both nutritious and delicious.
+          </p>
+        </div>
+        <div className="aspect-video relative rounded-lg overflow-hidden shadow-lg">
+          <Image
+            src="/images/Milk.jpg"
+            alt="Fresh A2 milk from MilkyWay"
+            fill
+            className="object-cover"
+            quality={90}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            data-ai-hint="milk bottle"
+          />
         </div>
       </div>
     </div>

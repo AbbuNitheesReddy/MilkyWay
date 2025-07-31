@@ -23,11 +23,13 @@ export default function Home() {
       
         <section className="relative h-[60vh] md:h-[80vh] flex items-center justify-center text-center text-white">
           <Image
-            src="/images/hero.png"
+            src="/images/hero.jpg"
             alt="Happy cows in a lush green field under a clear blue sky"
             fill
             className="object-cover z-0"
             priority
+            quality={95}
+            sizes="100vw"
             data-ai-hint="happy cows field"
           />
           <div className="absolute inset-0 bg-black/30 z-0"></div>
@@ -47,10 +49,10 @@ export default function Home() {
         <section className="py-16 bg-card">
           <div className="container mx-auto px-4 text-center max-w-4xl">
             <h2 className="text-xl md:text-2xl font-bold tracking-wider mb-6">
-              WE DELIVER FRESH AND PURE A2 MILK PRODUCED BY OUR INDIGENOUS-BREED COWS WITHIN 3 HOURS OF MILKING, TO GURGAON & SOUTH DELHI.
+              WE DELIVER FRESH AND PURE A2 MILK PRODUCED BY OUR INDIGENOUS-BREED COWS WITHIN 3 HOURS OF MILKING, TO HYDERABAD CITY.
             </h2>
             <p className="text-muted-foreground text-base md:text-lg">
-              MilkyWay Dairyworks was started by a passionate farmer, who left his corporate job to follow his calling of going back to the land to produce pure food using sustainable farming practices. Our farm is located in the Aravalis, near Golf Course Road, Gurgaon. MilkyWay milk is produced at our own farm and not aggregated from different farms. Our cows are not given any hormones, antibiotics or drugs. They are fed pesticide free green fodder grown at our own farm, not separated from their calves and encouraged to roam free.
+              MilkyWay Dairyworks was started by a passionate farmer, who left his corporate job to follow his calling of going back to the land to produce pure food using sustainable farming practices. Our farm is located in the lush green areas of Jubilee Hills, Hyderabad. MilkyWay milk is produced at our own farm and not aggregated from different farms. Our cows are not given any hormones, antibiotics or drugs. They are fed pesticide free green fodder grown at our own farm, not separated from their calves and encouraged to roam free.
             </p>
           </div>
         </section>
@@ -101,13 +103,15 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="order-2 md:order-1">
                 <Image
-                  src="/images/cows.png"
-                  alt="Happy cows grazing in a field"
-                  width={600}
-                  height={450}
-                  className="rounded-lg shadow-lg"
-                  data-ai-hint="happy cows"
-                />
+                    src="/images/cows.jpg"
+                    alt="Happy cows grazing in a field"
+                    width={600}
+                    height={450}
+                    className="rounded-lg shadow-lg object-cover w-full h-full"
+                    quality={95}
+                    sizes="(max-width: 768px) 100vw, 600px"
+                    data-ai-hint="happy cows"
+                  />
               </div>
               <div className="order-1 md:order-2">
                 <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4">The MilkyWay Farm</h2>
@@ -205,17 +209,20 @@ export default function Home() {
                 <h2 className="font-headline text-3xl md:text-4xl font-bold mb-4">Our Farm</h2>
                 <div className="space-y-2 text-muted-foreground">
                   <p>MILKYWAY Dairy Works</p>
-                  <p>Baliawas Village, Near Gwal Pahari</p>
-                  <p>Gurgaon 122002</p>
+                  <p>Jubilee Hills, Hyderabad</p>
+                  <p>Telangana 500033</p>
                 </div>
-                <div className="mt-6">
-                  <Image
-                    src="/images/map.png"
-                    alt="Map of our farm location"
-                    width={600}
-                    height={400}
-                    className="rounded-lg shadow-lg w-full"
-                    data-ai-hint="map view"
+                <div className="mt-6 rounded-lg shadow-lg overflow-hidden" style={{ height: '400px' }}>
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30452.77953614!2d78.39916562431642!3d17.431179899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb97031531026f%3A0xbf371f589b17fc02!2sJubilee%20Hills%2C%20Hyderabad%2C%20Telangana%20500033!5e0!3m2!1sen!2sin!4v1716034069748!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    allowFullScreen={true} 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="MilkyWay Farm Location"
+                    aria-label="Google Maps showing MilkyWay Farm location in Jubilee Hills, Hyderabad"
                   />
                 </div>
               </div>
