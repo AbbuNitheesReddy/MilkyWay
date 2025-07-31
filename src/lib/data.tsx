@@ -67,6 +67,33 @@ export const products: Product[] = [
     hint: 'buttermilk glass',
     size: '500ml',
   },
+  {
+    id: '7',
+    name: 'A2 Khoya/Mawa',
+    description: 'Rich, dense milk solids, perfect for preparing authentic Indian sweets.',
+    price: 6.00,
+    image: 'https://placehold.co/400x400.png',
+    hint: 'khoya pieces',
+    size: '250g',
+  },
+  {
+    id: '8',
+    name: 'Flavored Yogurt',
+    description: 'Creamy A2 yogurt blended with real fruit pulp. A healthy and delicious snack.',
+    price: 3.00,
+    image: 'https://placehold.co/400x400.png',
+    hint: 'yogurt cup',
+    size: '150g',
+  },
+  {
+    id: '9',
+    name: 'Artisanal Cheese',
+    description: 'Aged cheddar made from pure A2 milk, offering a sharp and savory flavor profile.',
+    price: 8.50,
+    image: 'https://placehold.co/400x400.png',
+    hint: 'cheese block',
+    size: '150g',
+  }
 ];
 
 
