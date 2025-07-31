@@ -23,7 +23,7 @@ export default function AboutPage() {
         </div>
         <div className="aspect-video relative rounded-lg overflow-hidden shadow-lg">
           <Image
-            src="https://placehold.co/600x400.png"
+            src="/images/farm.png"
             alt="The MilkyWay farm"
             fill
             className="object-cover"
@@ -35,7 +35,7 @@ export default function AboutPage() {
        <div className="grid md:grid-cols-2 gap-12 items-center">
          <div className="aspect-video relative rounded-lg overflow-hidden shadow-lg order-2 md:order-1">
           <Image
-            src="https://placehold.co/600x400.png"
+            src="/images/cows.png"
             alt="Happy cows grazing"
             fill
             className="object-cover"

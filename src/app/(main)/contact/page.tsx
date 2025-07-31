@@ -61,7 +61,7 @@ export default function ContactPage() {
                 </div>
                 <div className="aspect-video relative rounded-lg overflow-hidden shadow-lg">
                     <Image
-                        src="https://placehold.co/600x400.png"
+                        src="/images/map.png"
                         alt="Map of our farm location"
                         fill
                         className="object-cover w-full"

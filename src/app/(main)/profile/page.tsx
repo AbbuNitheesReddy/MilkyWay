@@ -1,6 +1,7 @@
 
 "use client";
 
+import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -51,7 +52,7 @@ export default function ProfilePage() {
     <div className="container mx-auto px-4 py-8">
       <div className="flex items-center gap-6 mb-8">
         <Avatar className="h-24 w-24">
-            <AvatarImage src="https://placehold.co/100x100.png" alt={user.name} data-ai-hint="user avatar" />
+            <AvatarImage src="/images/avatar.png" alt={user.name} data-ai-hint="user avatar" />
             <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
         </Avatar>
         <div>

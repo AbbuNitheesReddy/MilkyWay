@@ -23,7 +23,7 @@ export default function Home() {
       
         <section className="relative h-[60vh] md:h-[80vh] flex items-center justify-center text-center text-white">
           <Image
-            src="https://storage.googleapis.com/aai-web-samples/milky-way-hero.png"
+            src="/images/hero.png"
             alt="Happy cows in a lush green field under a clear blue sky"
             fill
             className="object-cover z-0"
@@ -101,7 +101,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="order-2 md:order-1">
                 <Image
-                  src="https://placehold.co/600x450.png"
+                  src="/images/cows.png"
                   alt="Happy cows grazing in a field"
                   width={600}
                   height={450}
@@ -210,7 +210,7 @@ export default function Home() {
                 </div>
                 <div className="mt-6">
                   <Image
-                    src="https://placehold.co/600x400.png"
+                    src="/images/map.png"
                     alt="Map of our farm location"
                     width={600}
                     height={400}

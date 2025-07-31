@@ -20,7 +20,7 @@ export default function BranchSelectionPage() {
              <CardHeader className="p-0">
                 <div className="aspect-video relative">
                      <Image
-                        src="https://placehold.co/400x300.png"
+                        src="/images/store.png"
                         alt={`${branch.name} branch`}
                         fill
                         className="object-cover"

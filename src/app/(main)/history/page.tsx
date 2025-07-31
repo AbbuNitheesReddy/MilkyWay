@@ -71,7 +71,7 @@ const OrderTracking = ({ status }: { status: 'Delivered' | 'Processing' | 'Cance
                  <div className="mt-6">
                     <h5 className="font-semibold mb-2">Live Tracking</h5>
                      <div className="aspect-video bg-muted rounded-lg overflow-hidden relative">
-                         <Image src="https://placehold.co/600x400.png" alt="Map" fill className="object-cover" data-ai-hint="map view"/>
+                         <Image src="/images/map.png" alt="Map" fill className="object-cover" data-ai-hint="map view"/>
                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary">
                             <Truck className="h-8 w-8 animate-pulse" />
                          </div>
