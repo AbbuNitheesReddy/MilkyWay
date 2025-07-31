@@ -40,7 +40,7 @@ export function ProductCard({ product }: { product: Product }) {
       </CardContent>
       <CardFooter className="p-4 flex justify-between items-center mt-auto">
         <div>
-          <p className="text-lg font-bold text-foreground">${product.price.toFixed(2)}</p>
+          <p className="text-lg font-bold text-foreground">₹{product.price.toFixed(2)}</p>
           <p className="text-sm text-muted-foreground">{product.size}</p>
         </div>
         <Button onClick={handleAddToCart} aria-label={`Add ${product.name} to cart`}>

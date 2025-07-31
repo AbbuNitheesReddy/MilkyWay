@@ -136,7 +136,7 @@ export default function HistoryPage() {
                         >
                             {order.status}
                         </Badge>
-                         <p className="font-bold text-lg">${order.total.toFixed(2)}</p>
+                         <p className="font-bold text-lg">₹{order.total.toFixed(2)}</p>
                          <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200" />
                     </div>
                   </AccordionTrigger>
@@ -149,13 +149,13 @@ export default function HistoryPage() {
                             return (
                                 <div key={item.productId} className="flex justify-between items-center mb-2">
                                     <span>{product.name} x {item.quantity}</span>
-                                    <span>${(product.price * item.quantity).toFixed(2)}</span>
+                                    <span>₹{(product.price * item.quantity).toFixed(2)}</span>
                                 </div>
                             )
                         })}
                         <div className="flex justify-between font-bold mt-2">
                             <span>Total</span>
-                            <span>${order.total.toFixed(2)}</span>
+                            <span>₹{order.total.toFixed(2)}</span>
                         </div>
                         <div className="flex gap-2 justify-end mt-4">
                           <Button variant="outline">

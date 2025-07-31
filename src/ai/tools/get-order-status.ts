@@ -1,3 +1,4 @@
+
 'use server';
 
 import { ai } from '@/ai/genkit';
@@ -63,6 +64,6 @@ export const getOrderStatus = ai.defineTool(
 
     const orderDate = new Date(order.date).toLocaleDateString();
 
-    return `The status for order #${order.id} (placed on ${orderDate}) is: ${order.status}. The total was $${order.total.toFixed(2)}.`;
+    return `The status for order #${order.id} (placed on ${orderDate}) is: ${order.status}. The total was ₹${order.total.toFixed(2)}.`;
   }
 );

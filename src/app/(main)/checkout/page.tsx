@@ -131,7 +131,7 @@ export default function CheckoutPage() {
                   <RadioGroupItem value="express" id="express" className="peer sr-only" />
                   <Label htmlFor="express" className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">
                     Express (Tomorrow)
-                    <span className="font-bold mt-1">${deliveryFee.toFixed(2)}</span>
+                    <span className="font-bold mt-1">₹{deliveryFee.toFixed(2)}</span>
                   </Label>
                 </div>
               </RadioGroup>
@@ -168,16 +168,16 @@ export default function CheckoutPage() {
                 {items.map(item => (
                     <div key={item.product.id} className="flex justify-between">
                         <span>{item.product.name} x {item.quantity}</span>
-                        <span>${(item.product.price * item.quantity).toFixed(2)}</span>
+                        <span>₹{(item.product.price * item.quantity).toFixed(2)}</span>
                     </div>
                 ))}
 
               <Separator />
-              <div className="flex justify-between"><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
-              <div className="flex justify-between"><span>Delivery</span><span>${deliveryFee.toFixed(2)}</span></div>
-              <div className="flex justify-between text-muted-foreground"><span>Taxes</span><span>${tax.toFixed(2)}</span></div>
+              <div className="flex justify-between"><span>Subtotal</span><span>₹{subtotal.toFixed(2)}</span></div>
+              <div className="flex justify-between"><span>Delivery</span><span>₹{deliveryFee.toFixed(2)}</span></div>
+              <div className="flex justify-between text-muted-foreground"><span>Taxes</span><span>₹{tax.toFixed(2)}</span></div>
               <Separator />
-              <div className="flex justify-between font-bold text-lg"><span>Total</span><span>${total.toFixed(2)}</span></div>
+              <div className="flex justify-between font-bold text-lg"><span>Total</span><span>₹{total.toFixed(2)}</span></div>
             </CardContent>
             <CardFooter>
               <Button onClick={handlePlaceOrder} className="w-full" size="lg">Place Order</Button>
